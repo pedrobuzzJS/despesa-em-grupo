@@ -1,0 +1,50 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String    @id @default(uuid())
+  name           String    @db.VarChar(255)
+  username       String    @db.VarChar(255)
+  email          String    @db.VarChar(255)
+  email_verified Boolean   @default(false)
+  password       String    @db.VarChar(255)
+  remember_token String?   @db.VarChar(255)
+  status_id      Int?
+  created_at     DateTime  @default(now())
+  updated_at     DateTime?
+}
+
+model Menus {
+  id            Int       @id @default(autoincrement())
+  name          String    @db.VarChar(255)
+  parameters    String    @db.VarChar(255)
+  route         String?   @db.VarChar(255)
+  icon          String    @db.VarChar(255)
+  parent_id     Int?
+  component     String?   @db.VarChar(255)
+  has_childrens Boolean   @default(false)
+  order         Int?
+  disabled      Boolean   @default(false)
+  status_id     Int?
+  created_at    DateTime  @default(now())
+  updated_at    DateTime?
+}
+
+model Status {
+  id          Int    @id @default(autoincrement())
+  nome        String @db.VarChar(255)
+  description String @db.VarChar(255)
+}
+
+model Page {
+  id Int @id @default(autoincrement())
+}
