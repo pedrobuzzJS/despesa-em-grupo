@@ -13,7 +13,8 @@ const AppRoutes = () => {
         );
     };
 
-    return signed ? <AppAuthRoutes /> : <AppDefaultRoutes />;
+    // return signed ? <AppAuthRoutes /> : <AppDefaultRoutes />;
+    return signed ? <AppAuthRoutes /> : <AppAuthRoutes />;
 };
 
 export default AppRoutes;
