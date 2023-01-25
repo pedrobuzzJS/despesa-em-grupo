@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+interface ShowMenuToggle {
+    disabled: boolean;
+}
+
 export const Cabecalho = styled.header`
     display: flex;
     flex-direction: row;
@@ -16,6 +20,23 @@ export const Cabecalho = styled.header`
             padding: 10px;
         }
 `;
+
+export const WrapperMenu = styled.div<ShowMenuToggle>`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    div {
+        display: block;
+        padding-left: 7px;
+        padding-right: 7px;
+        cursor: pointer;
+        /* margin-left: 230px; */
+        margin-left: ${({ disabled }) => (disabled && disabled === true ? '230px' : '')};
+        transition: all 0.3s;
+    }
+`;
+
 export const MenuSuperior = styled.ul`
     display: flex;
     justify-content: space-between;
@@ -28,12 +49,12 @@ export const MenuSuperior = styled.ul`
         }
     }
 `;
-export const SideBar = styled.div`
-    min-width: 250px;
-    max-width: 250px;
+export const SideBar = styled.div<ShowMenuToggle>`
+    /* width: 250px; */
     background: #1d1e20;
     height: 100vh;
-    /* margin-left: -250px; */
+    width: ${({ disabled }) => (disabled && disabled === true ? '250px' : '50px')};
+    margin-left: ${({ disabled }) => (disabled && disabled === true ? '-50px' : '')};
     transition: all 0.3s;
 
 `;
@@ -48,4 +69,10 @@ export const Conteudo = styled.div`
 `;
 
 export const Rodape = styled.div`
+`;
+
+export const IconContainer = styled.div`
+    display: block;
+    padding: 7PX;
+    cursor: pointer;
 `;

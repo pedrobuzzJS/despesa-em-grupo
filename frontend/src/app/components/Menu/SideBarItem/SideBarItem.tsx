@@ -1,19 +1,50 @@
-// import React, { useCallback, useState } from "react";
-// import { LinkMenu } from "../../../model/LinkMenu";
-// import * as AiIcons from 'react-icons/ai';
-// import * as RiIcons from 'react-icons/ri'
-// import { 
-//     LinkContainer,
-//     StyledMenuText,
-//     Container,
-//     OpenContainer,
-//     ImgContainer
-// } from "./style";
 import React from "react";
+import { IconContext } from "react-icons";
+import * as RiIcons from 'react-icons/ri'
+import { LinkContainer, MenuItem, MenuItemSpan } from "./style";
 
 export const SideBarItem: React.FC = () => {
     return (
-        <></>
+        <nav>
+            <ul>
+                <MenuItem>
+                    <LinkContainer to={"dash"}>
+                        <RiIcons.RiDashboardFill />
+                        <MenuItemSpan>Dash</MenuItemSpan>
+                    </LinkContainer>
+                </MenuItem>
+                <MenuItem>
+                    <LinkContainer to={"dash"}>
+                        <RiIcons.RiDashboardFill />
+                        <MenuItemSpan>Dash</MenuItemSpan>
+                    </LinkContainer>
+                </MenuItem>
+                <MenuItem>
+                    <LinkContainer to={"dash"}>
+                        <RiIcons.RiDashboardFill />
+                        <MenuItemSpan>Dash</MenuItemSpan>
+                    </LinkContainer>
+                </MenuItem>
+                <MenuItem>
+                    <LinkContainer to={"dash"}>
+                        <RiIcons.RiDashboardFill />
+                        <MenuItemSpan>Dash</MenuItemSpan>
+                    </LinkContainer>
+                </MenuItem>
+                <MenuItem>
+                    <LinkContainer to={"dash"}>
+                        <RiIcons.RiDashboardFill />
+                        <MenuItemSpan>Dash</MenuItemSpan>
+                    </LinkContainer>
+                </MenuItem>
+                <MenuItem>
+                    <LinkContainer to={"dash"}>
+                        <RiIcons.RiDashboardFill />
+                        <MenuItemSpan>Dash</MenuItemSpan>
+                    </LinkContainer>
+                </MenuItem>
+            </ul>
+        </nav>
     );
 };
 // export const SideBarItem: React.FC<LinkMenu> = ({ id, icon, name, parent_id, route, childrens, has_childrens, disabled, ...props }) => {

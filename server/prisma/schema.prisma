@@ -21,6 +21,8 @@ model User {
   status_id      Int?
   created_at     DateTime  @default(now())
   updated_at     DateTime?
+
+  @@map("tbusuarios")
 }
 
 model Menus {
@@ -37,14 +39,20 @@ model Menus {
   status_id     Int?
   created_at    DateTime  @default(now())
   updated_at    DateTime?
+
+  @@map("tbmenus")
 }
 
 model Status {
   id          Int    @id @default(autoincrement())
   nome        String @db.VarChar(255)
   description String @db.VarChar(255)
+
+  @@map("tbstatus")
 }
 
 model Page {
   id Int @id @default(autoincrement())
+
+  @@map("tbpaginas")
 }
