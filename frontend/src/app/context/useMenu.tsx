@@ -11,6 +11,8 @@ interface MenuInterface {
    menuNome: string | null,
    rotaAtual: string | null,
    fetechedMenu: LinkMenu[],
+   isSideBarOpen: boolean;
+   showSideBar: () => void;
 };
 
 interface MenuProviderChildren extends PropsWithChildren {};
@@ -18,22 +20,26 @@ interface MenuProviderChildren extends PropsWithChildren {};
 const MenuContext = createContext<MenuInterface>({} as MenuInterface);
 
 export const MenuProvider: React.FC<MenuProviderChildren> = ({children}) => {
-   const [ nome, setNome ] = useState<string | null>(null);
-   const [ rotaAtual, setRotaAtual ] = useState<string | null>(null);
-   const { data, loadding } = useFetch<any>("menu");
-   const { pathname } = useLocation();
+    const [ nome, setNome ] = useState<string | null>(null);
+    const [ rotaAtual, setRotaAtual ] = useState<string | null>(null);
+    const { data, loadding } = useFetch<any>("menu");
+    const { pathname } = useLocation();
+    const [ isSideBarOpen, setIsSideBarOpen ] = useState<boolean>(true);
+    const showSideBar = () => setIsSideBarOpen(!isSideBarOpen);
 
-   // useEffect( () => {
-   //     let menuCopy: LinkMenu[] = data;
-   //     let rotaAtual = menuCopy.filter( item => item.rota === pathname.replace("/", "") );
-   //     console.log(rotaAtual);
-   // }, [data, pathname] );
+    // useEffect( () => {
+    //     let menuCopy: LinkMenu[] = data;
+    //     let rotaAtual = menuCopy.filter( item => item.rota === pathname.replace("/", "") );
+    //     console.log(rotaAtual);
+    // }, [data, pathname] );
 
    return (
        <MenuContext.Provider value={{
            menuNome: pathname,
            rotaAtual: rotaAtual,
            fetechedMenu: data,
+           isSideBarOpen: isSideBarOpen,
+           showSideBar: showSideBar
        }}>
            {children}
        </MenuContext.Provider>

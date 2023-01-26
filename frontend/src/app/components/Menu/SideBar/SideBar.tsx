@@ -12,10 +12,13 @@ import * as IoIcons from "react-icons/io";
 import * as FaIcons from 'react-icons/fa';
 import { SideBarItem } from "../SideBarItem/SideBarItem";
 import { IconContext } from "react-icons";
+import { useMenu } from "../../../context/useMenu";
 
 export const SideBarLayout: React.FC<PropsWithChildren> = ({children}) => {
-    const [ isSideBarOpen, setIsSideBarOpen ] = useState<boolean>(false);
-    const showSideBar = () => setIsSideBarOpen(!isSideBarOpen);
+    // const [ isSideBarOpen, setIsSideBarOpen ] = useState<boolean>(false);
+    // const showSideBar = () => setIsSideBarOpen(!isSideBarOpen);
+
+    const { isSideBarOpen, showSideBar } = useMenu();
 
     return (
         <IconContext.Provider value={

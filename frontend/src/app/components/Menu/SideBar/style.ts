@@ -50,12 +50,10 @@ export const MenuSuperior = styled.ul`
     }
 `;
 export const SideBar = styled.div<ShowMenuToggle>`
-    /* width: 250px; */
+    width: ${({ disabled }) => (disabled && disabled === true ? '250px' : '50px')};
     background: #1d1e20;
     height: 100vh;
-    width: ${({ disabled }) => (disabled && disabled === true ? '250px' : '50px')};
-    margin-left: ${({ disabled }) => (disabled && disabled === true ? '-50px' : '')};
-    transition: all 0.3s;
+    transition: all 1s;
 
 `;
 

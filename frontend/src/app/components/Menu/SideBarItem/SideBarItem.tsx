@@ -1,46 +1,23 @@
-import React from "react";
-import { IconContext } from "react-icons";
-import * as RiIcons from 'react-icons/ri'
-import { LinkContainer, MenuItem, MenuItemSpan } from "./style";
+import React, { useState } from "react";
+import * as RiIcons from 'react-icons/ri';
+import { LinkContainer, MenuItem, MenuSpanDiv } from "./style";
+import { useMenu } from "../../../context/useMenu";
 
 export const SideBarItem: React.FC = () => {
+    // const [ isSideBarOpen, setIsSideBarOpen ] = useState<boo
+    // const { isSideBarOpen, showSideBar } = useMenu();
+
+    const { isSideBarOpen, showSideBar } = useMenu();
+
     return (
         <nav>
             <ul>
                 <MenuItem>
-                    <LinkContainer to={"dash"}>
+                    <LinkContainer to={"dash"} disabled={isSideBarOpen}>
                         <RiIcons.RiDashboardFill />
-                        <MenuItemSpan>Dash</MenuItemSpan>
-                    </LinkContainer>
-                </MenuItem>
-                <MenuItem>
-                    <LinkContainer to={"dash"}>
-                        <RiIcons.RiDashboardFill />
-                        <MenuItemSpan>Dash</MenuItemSpan>
-                    </LinkContainer>
-                </MenuItem>
-                <MenuItem>
-                    <LinkContainer to={"dash"}>
-                        <RiIcons.RiDashboardFill />
-                        <MenuItemSpan>Dash</MenuItemSpan>
-                    </LinkContainer>
-                </MenuItem>
-                <MenuItem>
-                    <LinkContainer to={"dash"}>
-                        <RiIcons.RiDashboardFill />
-                        <MenuItemSpan>Dash</MenuItemSpan>
-                    </LinkContainer>
-                </MenuItem>
-                <MenuItem>
-                    <LinkContainer to={"dash"}>
-                        <RiIcons.RiDashboardFill />
-                        <MenuItemSpan>Dash</MenuItemSpan>
-                    </LinkContainer>
-                </MenuItem>
-                <MenuItem>
-                    <LinkContainer to={"dash"}>
-                        <RiIcons.RiDashboardFill />
-                        <MenuItemSpan>Dash</MenuItemSpan>
+                            <MenuSpanDiv disabled={isSideBarOpen}>
+                                <span>Dash</span>
+                            </MenuSpanDiv>
                     </LinkContainer>
                 </MenuItem>
             </ul>
