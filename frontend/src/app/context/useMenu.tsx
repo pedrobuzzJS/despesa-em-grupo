@@ -24,7 +24,7 @@ export const MenuProvider: React.FC<MenuProviderChildren> = ({children}) => {
     const [ rotaAtual, setRotaAtual ] = useState<string | null>(null);
     const { data, loadding } = useFetch<any>("menu");
     const { pathname } = useLocation();
-    const [ isSideBarOpen, setIsSideBarOpen ] = useState<boolean>(true);
+    const [ isSideBarOpen, setIsSideBarOpen ] = useState<boolean>(false);
     const showSideBar = () => setIsSideBarOpen(!isSideBarOpen);
 
     // useEffect( () => {

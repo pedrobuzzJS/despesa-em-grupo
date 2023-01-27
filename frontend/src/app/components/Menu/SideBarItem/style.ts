@@ -13,7 +13,7 @@ export const LinkContainer = styled(Link)<LinkContainerToggle>`
     padding: 5px 15px 5px 15px;
     justify-content: space-between;
     align-items: center;
-    transition: all 1s ease;
+    transition: all 0.5s ease;
 
     &:hover {
         /* background: lightgray; */
@@ -39,5 +39,5 @@ export const LinkContainer = styled(Link)<LinkContainerToggle>`
 
 export const MenuSpanDiv = styled.div<LinkContainerToggle>`
     color: red;
-    visibility: ${({ disabled }) => (disabled && disabled === true ? 'hidden' : 'visible')};
+    ${({ disabled }) => (disabled && disabled === true) ? 'visibility: visible;' : 'display: none;'}
 `;
