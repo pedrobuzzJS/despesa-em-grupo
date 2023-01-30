@@ -7,6 +7,10 @@ interface LinkContainerToggle {
 
 export const MenuItem = styled.li``;
 
+export const SideBarNav = styled.nav`
+    height: 100%;
+`;
+
 export const LinkContainer = styled(Link)<LinkContainerToggle>`
     width: ${({ disabled }) => (disabled && disabled === true ? '250px' : '50px')};
     display: flex;
@@ -16,9 +20,7 @@ export const LinkContainer = styled(Link)<LinkContainerToggle>`
     transition: all 0.5s ease;
 
     &:hover {
-        /* background: lightgray; */
-        background: lightblue;
-
+        background: lightgray;
         > svg {
             transform: rotate(180deg);
             transition: 350ms;
@@ -26,12 +28,8 @@ export const LinkContainer = styled(Link)<LinkContainerToggle>`
     }
 
     > svg {
-        /* margin-left: 50px; */
         width: 25px;
         height: 25px;
-        /* transform: rotate(90deg); */
-        /* transition: 350ms; */
-        /* margin-left: 4px; */
     }
     text-decoration: none;
     color: #fff;

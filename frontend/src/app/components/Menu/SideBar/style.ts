@@ -61,7 +61,9 @@ export const SideBar = styled.div<ShowMenuToggle>`
 
 export const OpenButton = styled.div<ShowMenuToggle>`
     width: ${({ disabled }) => (disabled && disabled === true ? '250px' : '50px')};
-    padding: 5px 15px 5px 15px;
+    display: block;
+    padding: 15px 15px 15px 15px;
+    cursor: pointer;
     > svg {
         width: 20px;
         height: 20px;

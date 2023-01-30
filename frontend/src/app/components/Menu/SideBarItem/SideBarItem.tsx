@@ -1,16 +1,18 @@
 import React, { useState } from "react";
 import * as RiIcons from 'react-icons/ri';
-import { LinkContainer, MenuItem, MenuSpanDiv } from "./style";
+import { LinkContainer, MenuItem, MenuSpanDiv, SideBarNav } from "./style";
 import { useMenu } from "../../../context/useMenu";
 
 export const SideBarItem: React.FC = () => {
     // const [ isSideBarOpen, setIsSideBarOpen ] = useState<boo
     // const { isSideBarOpen, showSideBar } = useMenu();
 
-    const { isSideBarOpen, showSideBar } = useMenu();
+    const { isSideBarOpen, openSideBar, closeSideBar } = useMenu();
 
     return (
-        <nav>
+        <SideBarNav
+            onMouseOver={openSideBar} onMouseLeave={closeSideBar}
+        >
             <ul>
                 <MenuItem>
                     <LinkContainer to={"dash"} disabled={isSideBarOpen}>
@@ -21,7 +23,7 @@ export const SideBarItem: React.FC = () => {
                     </LinkContainer>
                 </MenuItem>
             </ul>
-        </nav>
+        </SideBarNav>
     );
 };
 // export const SideBarItem: React.FC<LinkMenu> = ({ id, icon, name, parent_id, route, childrens, has_childrens, disabled, ...props }) => {

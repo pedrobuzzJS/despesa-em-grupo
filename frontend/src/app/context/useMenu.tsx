@@ -2,7 +2,8 @@ import React, { useState,
     createContext,
     useContext,
    //  useEffect,
-    PropsWithChildren } from "react";
+    PropsWithChildren, 
+    useEffect} from "react";
 import { useFetch } from "../hooks/useFetch";
 import { LinkMenu } from "../model/LinkMenu";
 import { useLocation } from "react-router-dom";
@@ -13,6 +14,8 @@ interface MenuInterface {
    fetechedMenu: LinkMenu[],
    isSideBarOpen: boolean;
    showSideBar: () => void;
+   openSideBar: () => void;
+   closeSideBar: () => void;
 };
 
 interface MenuProviderChildren extends PropsWithChildren {};
@@ -26,10 +29,12 @@ export const MenuProvider: React.FC<MenuProviderChildren> = ({children}) => {
     const { pathname } = useLocation();
     const [ isSideBarOpen, setIsSideBarOpen ] = useState<boolean>(false);
     const showSideBar = () => setIsSideBarOpen(!isSideBarOpen);
+    const openSideBar = () => setIsSideBarOpen(true);
+    const closeSideBar = () => setIsSideBarOpen(false);
 
     // useEffect( () => {
     //     let menuCopy: LinkMenu[] = data;
-    //     let rotaAtual = menuCopy.filter( item => item.rota === pathname.replace("/", "") );
+    //     let rotaAtual = menuCopy.filter( item => item.route === pathname.replace("/", "") );
     //     console.log(rotaAtual);
     // }, [data, pathname] );
 
@@ -39,7 +44,9 @@ export const MenuProvider: React.FC<MenuProviderChildren> = ({children}) => {
            rotaAtual: rotaAtual,
            fetechedMenu: data,
            isSideBarOpen: isSideBarOpen,
-           showSideBar: showSideBar
+           showSideBar: showSideBar,
+           openSideBar: openSideBar,
+           closeSideBar: closeSideBar
        }}>
            {children}
        </MenuContext.Provider>
