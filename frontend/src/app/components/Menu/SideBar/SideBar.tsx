@@ -6,7 +6,6 @@ import { Cabecalho,
     PaginaTotal, 
     Rodape, 
     SideBar, 
-    WrapperMenu,
     OpenButton
 } from "./style";
 import * as IoIcons from "react-icons/io";
@@ -27,28 +26,6 @@ export const SideBarLayout: React.FC<PropsWithChildren> = ({children}) => {
                 color: '#fff'
             }
         }>
-            {/* <Cabecalho>
-                <WrapperMenu disabled={isSideBarOpen}>
-                    <div onClick={showSideBar}>
-                        <FaIcons.FaBars />
-                    </div>
-                    <MenuSuperior>
-                        <li>
-                            <a href="#">Atalho 1</a>
-                        </li>
-                        <li>
-                            <a href="#">Atalho 2</a>
-                        </li>
-                        <li>
-                            <a href="#">Barra de Pesquisa 3</a>
-                        </li>
-                    </MenuSuperior>
-                </WrapperMenu>
-                <IconContainer>
-                    <IoIcons.IoMdExit />
-                </IconContainer>
-            </Cabecalho> */}
-
             <PaginaTotal>
                 <SideBar disabled={isSideBarOpen}>
                     <OpenButton 
@@ -62,9 +39,8 @@ export const SideBarLayout: React.FC<PropsWithChildren> = ({children}) => {
                 <Conteudo>
                     {children}
                 </Conteudo>
+                <Rodape />
             </PaginaTotal>
-            <Rodape>
-            </Rodape>
         </IconContext.Provider>
     );
 };

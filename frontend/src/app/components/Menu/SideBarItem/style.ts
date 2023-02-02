@@ -5,6 +5,10 @@ interface LinkContainerToggle {
     disabled: boolean;
 }
 
+export const MenuLista = styled.ul`
+    padding-top: 37px;
+`;
+
 export const MenuItem = styled.li``;
 
 export const SideBarNav = styled.nav`

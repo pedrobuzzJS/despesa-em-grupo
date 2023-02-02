@@ -6,7 +6,6 @@ interface ShowMenuToggle {
 
 export const Cabecalho = styled.header`
     display: flex;
-    /* flex-direction: row; */
     justify-content: space-between;
     align-items: center;
     background: #1d1e20;
@@ -34,35 +33,34 @@ export const MenuSuperior = styled.ul`
     }
 `;
 
-export const WrapperMenu = styled.div<ShowMenuToggle>`
-    display: flex;
-    flex-direction: row;
-    /* justify-content: center; */
+// export const WrapperMenu = styled.div<ShowMenuToggle>`
+//     display: flex;
+//     flex-direction: row;
 
-    div {
-        display: block;
-        padding-left: 7px;
-        padding-right: 7px;
-        cursor: pointer;
-        /* margin-left: 230px; */
-        margin-left: ${({ disabled }) => (disabled && disabled === true ? '230px' : '')};
-        transition: all 0.5s;
-    }
-`;
+//     div {
+//         display: block;
+//         padding-left: 7px;
+//         padding-right: 7px;
+//         cursor: pointer;
+//         margin-left: ${({ disabled }) => (disabled && disabled === true ? '230px' : '')};
+//         transition: all 0.5s;
+//     }
+// `;
 
 export const SideBar = styled.div<ShowMenuToggle>`
     width: ${({ disabled }) => (disabled && disabled === true ? '250px' : '50px')};
     background: #1d1e20;
     height: 100vh;
     transition: all 0.5s;
-    /* position: sticky; */
-    top: 0;
+    /* top: 0; */
+    position: relative;
 `;
 
 export const OpenButton = styled.div<ShowMenuToggle>`
     width: ${({ disabled }) => (disabled && disabled === true ? '250px' : '50px')};
-    display: block;
     padding: 15px 15px 15px 15px;
+    margin-bottom: 15px;
+    position: absolute;
     cursor: pointer;
     > svg {
         width: 20px;
@@ -72,8 +70,6 @@ export const OpenButton = styled.div<ShowMenuToggle>`
 
 export const PaginaTotal = styled.main`
     display: flex;
-    /* height: 100%; */
-    /* align-items: stretch; */
 `;
 
 export const Conteudo = styled.div`

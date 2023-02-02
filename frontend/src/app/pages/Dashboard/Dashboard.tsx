@@ -6,6 +6,9 @@ export const DashBoard: React.FC = () => {
     const { funcao } = useRole();
 
     return (
-        <h1>PAPEL DO USUARIO = {funcao}</h1>
+        <>
+            <h1>PAPEL DO USUARIO = {funcao}</h1>
+            <i className="ph-list"></i>
+        </>
     );
 }
