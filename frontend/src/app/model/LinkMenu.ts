@@ -1,12 +1,13 @@
 import React from "react";
-import { IconBaseProps } from "react-icons";
+// import { IconBaseProps } from "react-icons";
 
 export interface LinkMenu {
     id:                 number;
     name:               string;
     parameters?:        string;
     route?:             string;
-    icon:               React.ComponentType<IconBaseProps>;
+    // icon:               React.ComponentType<IconBaseProps>;
+    icon:               string;
     parent_id?:         number;
     childrens?:         LinkMenu[];
     component?:         string;

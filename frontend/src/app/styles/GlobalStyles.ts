@@ -60,7 +60,7 @@ export default createGlobalStyle`
         justify-content: center;
     }
 
-    .react-modal-content{
+    /* .react-modal-content{
         width: 100%;
         max-width: 1500px;
         background: #eee;
@@ -78,5 +78,5 @@ export default createGlobalStyle`
         border: 0;
         background: transparent;
         cursor: pointer;
-    }
+    } */
 `;
