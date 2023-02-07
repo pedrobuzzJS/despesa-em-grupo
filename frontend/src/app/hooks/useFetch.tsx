@@ -23,7 +23,7 @@ export function useFetch<T = unknown>(url: string, options?: AxiosRequestConfig)
         .finally( () => {
             setLoadding(false);
         })
-    }, [url] );
+    }, [] );
 
     useEffect(() => {
         fetch();
