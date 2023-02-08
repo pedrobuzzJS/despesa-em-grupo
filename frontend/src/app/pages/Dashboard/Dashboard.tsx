@@ -12,6 +12,7 @@ export const DashBoard: React.FC = () => {
             <Modal 
                 openModal={modal}
                 closeModal={() => setModal(false)}
+                closeOnEsc
             >
                 <h1>{modal}</h1>
             </Modal>
