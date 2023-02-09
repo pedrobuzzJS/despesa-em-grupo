@@ -3,7 +3,7 @@ import { DashBoard } from "../pages/Dashboard/Dashboard";
 import { PageA } from "../pages/PageA/PagaA";
 import { RoleProvider } from "../context/RoleContext";
 import { SideBarLayout } from "../components/Menu/SideBar/SideBar";
-import { MenuProvider } from "../context/useMenu";
+import { MenuProvider } from "../context/menuContext";
 
 const AuthRoutes = () => {
     return (

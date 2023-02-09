@@ -16,7 +16,6 @@ interface IModalProps extends PropsWithChildren {
 const ESC_KEY = 27;
 
 export const Modal: React.FC<IModalProps> = ({children, openModal, closeModal, backGroundClose=false, closeOnEsc=false, ...props}) => {
-    const backGroundRef = useRef();
     const handleBackGroundClick = (e: any) => {
         e.preventDefault();
         if ( (e.target.id != "background_modal") || (backGroundClose === false) ) return;

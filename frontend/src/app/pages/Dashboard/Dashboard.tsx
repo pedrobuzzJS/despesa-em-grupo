@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useRole } from "../../context/RoleContext";
-import { Separator } from "./style";
 import { Modal } from "../../components/Modal/Modal";
+import { SnackBar } from "../../components/SnackBar/SnackBar";
 
 export const DashBoard: React.FC = () => {
     const { funcao } = useRole();
@@ -12,11 +12,14 @@ export const DashBoard: React.FC = () => {
             <Modal 
                 openModal={modal}
                 closeModal={() => setModal(false)}
+                backGroundClose
                 closeOnEsc
             >
                 <h1>{modal}</h1>
             </Modal>
+
             <button onClick={() => setModal(true)} >Abrir Modal</button>
+
             <h1>PAPEL DO USUARIO = {funcao}</h1>
             <i className="ph-list"></i>
         </>

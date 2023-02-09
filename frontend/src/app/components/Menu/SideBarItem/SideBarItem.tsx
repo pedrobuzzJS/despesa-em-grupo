@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 // import * as RiIcons from 'react-icons/ri';
-import { useMenu } from "../../../context/useMenu";
+import { useMenu } from "../../../context/menuContext";
 
 export const SideBarItem: React.FC = () => {
     // const [ isSideBarOpen, setIsSideBarOpen ] = useState<boo

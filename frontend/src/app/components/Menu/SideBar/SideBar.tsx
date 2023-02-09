@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 // import * as IoIcons from "react-icons/io";
 // import * as FaIcons from 'react-icons/fa';
 // import { IconContext } from "react-icons";
-import { useMenu } from "../../../context/useMenu";
+import { useMenu } from "../../../context/menuContext";
 import {    SideBar,
             BarraSuperior,
             Conteudo

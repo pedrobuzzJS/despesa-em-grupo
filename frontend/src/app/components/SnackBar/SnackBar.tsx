@@ -1,23 +1,19 @@
-import React from "react";
-import { SnackBarContainer } from "./style";
+import React, { useState, useCallback } from "react";
+import { SnackBarContainer, Snack } from "./style";
 
-interface SnackBarProps {
-    type?: "Success" | "Info" | "Warning" | "Error";
-    open: boolean;
-    children: React.ReactNode;
-    onClose: () => void;
-};
-
-export const SnackBar: React.FC<SnackBarProps> = ({ type, open, children, onClose }) => {
+export const SnackBar: React.FC = () => {
     return (
-        <SnackBarContainer
-            open={open}
-            type={type}
-        >
-            {children}
-            <button className="close" onClick={onClose}>
-                Fechar
-            </button>
-        </SnackBarContainer>
+        <>
+            <SnackBarContainer>
+                <Snack>
+                </Snack>
+                <Snack>
+                </Snack>
+                <Snack>
+                </Snack>
+                <Snack>
+                </Snack>
+            </SnackBarContainer>
+        </>
     );
 };

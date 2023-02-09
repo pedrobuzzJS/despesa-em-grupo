@@ -2,8 +2,8 @@ import styled from "styled-components";
 import { Close } from "@styled-icons/evil";
 
 export const ModalBackGround = styled.div`
-    /* background: rgb(0,0,0, 0.5); */
-    background: transparent;
+    background: rgb(0,0,0, 0.5);
+    /* background: transparent; */
     position: fixed;
     left: 0;
     right: 0;
