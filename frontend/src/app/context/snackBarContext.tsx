@@ -1,30 +1,74 @@
-import { type } from "os";
-import React, { useState, useEffect, useCallback, PropsWithChildren, createContext, useContext }  from "react";
+import React, { useState, 
+    useEffect, 
+    useCallback, 
+    useRef, 
+    PropsWithChildren, 
+    createContext, 
+    useContext 
+}  from "react";
+import { ISnackBar } from "../utils/ISnackBar";
 import { SnackBar } from "../components/SnackBar/SnackBar";
+import styled from "styled-components";
 
-type SnackBarType = "Success" | "Info" | "Warning" | "Error" | "Default";
+export const SnackBarContainer = styled.div`
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+`;
 
-interface ISnackBarProps extends PropsWithChildren {
-    showSnackBar: (type: SnackBarType, message: string) => void;
+interface ISnackBarProps {
+    showSnackBar: ({ type, message, callback }: ISnackBar) => void;
+    addSnackBar: () => void;
 };
 
 interface SnackBarProviderWithChildren extends PropsWithChildren {};
 
 const SnackBarContext = createContext<ISnackBarProps>({} as ISnackBarProps);
 
-const SnackBarProvider: React.FC<SnackBarProviderWithChildren> = ({children}) => {
+export const SnackBarProvider: React.FC<SnackBarProviderWithChildren> = ({children}) => {
+    const [ snackBar, setSnackBar ] = useState<ISnackBar[]>([]);
 
-    const showSnackBar = (type: SnackBarType, message: string) => {
-
+    const showSnackBar = ({ type, message, callback }: ISnackBar) => {
+        setSnackBar(
+            [  
+                ...snackBar,
+                {
+                    type: type,
+                    message: message,
+                    callback: callback
+                }
+            ]
+        );
     };
+
+    const addSnackBar = () => {
+    };
+
+    useEffect(() => {
+        console.log(snackBar);
+    }, [snackBar]);
 
     return (
         <SnackBarContext.Provider value={
             {
-                showSnackBar: showSnackBar
+                showSnackBar: showSnackBar,
+                addSnackBar: addSnackBar
             }
         }>
-            {children}
+            <>
+                {children}
+                <SnackBarContainer>
+                    { snackBar.map((snack, index) => 
+                        <SnackBar
+                            key={index}
+                            type={snack.type}
+                            message={snack.message}
+                        />)
+                    }
+                </SnackBarContainer>
+            </>
         </SnackBarContext.Provider>
     );
 };

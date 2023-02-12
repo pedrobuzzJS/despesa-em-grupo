@@ -1,7 +1,5 @@
 import React, { PropsWithChildren, useRef, useEffect } from "react";
 import { Container, ModalBackGround, ModalCloseButton } from "./style";
-import { Close } from "@styled-icons/evil";
-
 interface IModalProps extends PropsWithChildren {
     openModal: boolean;
     closeModal: () => void;

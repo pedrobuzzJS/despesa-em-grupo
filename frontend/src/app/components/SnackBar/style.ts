@@ -1,20 +1,28 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export const SnackBarContainer = styled.div`
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    flex-direction: column;
-`;
+interface ISnackBarStyle {
+    type: "Success" | "Info" | "Warning" | "Error" | "Default";
+}
 
-export const Snack = styled.div`
+export const Snack = styled.div<ISnackBarStyle>`
     float: left;
     height: 150px;
     width: 235px;
     margin: 10px;
-    /* background: rgb(0, 158, 0); */
-    /* background: rgb(86, 83, 255); */
-    /* background: rgb(255, 181, 44); */
-    background: rgb(219, 55, 55);
+
+    ${props => props?.type === "Success" && css`
+        background-color: rgb(0, 158, 0);
+    `};
+
+    ${props => props?.type === "Info" && css`
+        background-color: rgb(86, 83, 255);
+    `};
+
+    ${props => props?.type === "Warning" && css`
+        background-color: rgb(255, 181, 44);
+    `};
+
+    ${props => props?.type === "Error" && css`
+        background-color: rgb(219, 55, 55);
+    `};
 `;

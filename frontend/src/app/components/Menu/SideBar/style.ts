@@ -10,6 +10,12 @@ export const SideBar = styled.aside<ShowMenuToggle>`
     width: ${({ disabled }) => (disabled && disabled === true ? '250px' : '50px')};
     transition: all 0.4s;
     position: fixed;
+
+    .qualquer-coisa {
+        margin: 50px;
+    }
+
+
 `;
 
 export const BarraSuperior = styled.div`
@@ -24,5 +30,6 @@ export const BarraSuperior = styled.div`
 export const Conteudo = styled.div`
     width: 100%;
     height: 100%;
-    padding-left: 50px;
+    padding-left: 60px;
+    padding-right: 10px;
 `;

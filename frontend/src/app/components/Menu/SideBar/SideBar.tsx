@@ -5,16 +5,15 @@ import { Outlet } from "react-router-dom";
 // import { IconContext } from "react-icons";
 import { useMenu } from "../../../context/menuContext";
 import {    SideBar,
-            BarraSuperior,
             Conteudo
 } from "./style";
 
 export const SideBarLayout: React.FC<PropsWithChildren> = ({children}) => {
-    const { isSideBarOpen, showSideBar, openSideBar, closeSideBar } = useMenu();
+    const { isSideBarOpen, openSideBar, closeSideBar } = useMenu();
 
     return (
         <>
-            <BarraSuperior />
+            {/* <BarraSuperior /> */}
             <SideBar 
                 disabled={isSideBarOpen}
                 onMouseOver={openSideBar}
