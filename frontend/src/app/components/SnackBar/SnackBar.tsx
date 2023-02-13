@@ -1,14 +1,14 @@
 import React, { useState, useCallback } from "react";
-import { Snack } from "./style";
-import { ISnackBar } from "../../utils/ISnackBar";
+import { Toast } from "./style";
+import { IToast } from "../../utils/ISnackBar";
 
-export const SnackBar: React.FC<ISnackBar> = ({ type, message, ...props }) => {
+export const ToastBar: React.FC<IToast> = ({ type, message, ...props }) => {
     return (
-        <Snack
+        <Toast
             type={type}
         >
             <h1>{type}</h1>
             <h1>{message}</h1>
-        </Snack>
+        </Toast>
     );
 };

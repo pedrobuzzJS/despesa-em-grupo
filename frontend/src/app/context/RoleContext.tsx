@@ -4,10 +4,6 @@ import React, {
     useContext,
     useState } 
 from "react";
-import api from "../services/api";
-// import { useParams } from "react-router-dom";
-
-
 interface RoleInterface {
     funcao?: string[] | null;
     children?: React.ReactElement;
@@ -31,7 +27,6 @@ export const RoleProvider: React.FC<RoleInterface> = ({funcao, children, ...prop
     return (
         <RoleContext.Provider value={{
             funcao: funcao,
-            // children: children
         }}>
             {children}
         </RoleContext.Provider>

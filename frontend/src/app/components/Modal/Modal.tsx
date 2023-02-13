@@ -1,6 +1,7 @@
 import React, { PropsWithChildren, useRef, useEffect } from "react";
 import { Container, ModalBackGround, ModalCloseButton } from "./style";
 interface IModalProps extends PropsWithChildren {
+    id: string;
     openModal: boolean;
     closeModal: () => void;
     backGroundClose?: boolean;

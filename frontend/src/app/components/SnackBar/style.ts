@@ -1,10 +1,10 @@
 import styled, { css } from "styled-components";
 
-interface ISnackBarStyle {
+interface IToastStyle {
     type: "Success" | "Info" | "Warning" | "Error" | "Default";
 }
 
-export const Snack = styled.div<ISnackBarStyle>`
+export const Toast = styled.div<IToastStyle>`
     float: left;
     height: 150px;
     width: 235px;

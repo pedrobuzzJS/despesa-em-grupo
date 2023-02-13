@@ -1,4 +1,4 @@
-export interface ISnackBar {
+export interface IToast {
     type: "Success" | "Info" | "Warning" | "Error" | "Default";
     message: string;
     order?: number;

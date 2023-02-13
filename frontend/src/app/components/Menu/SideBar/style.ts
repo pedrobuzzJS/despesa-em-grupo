@@ -14,8 +14,6 @@ export const SideBar = styled.aside<ShowMenuToggle>`
     .qualquer-coisa {
         margin: 50px;
     }
-
-
 `;
 
 export const BarraSuperior = styled.div`

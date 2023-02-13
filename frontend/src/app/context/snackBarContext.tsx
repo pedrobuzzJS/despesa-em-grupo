@@ -1,16 +1,14 @@
 import React, { useState, 
     useEffect, 
-    useCallback, 
-    useRef, 
     PropsWithChildren, 
     createContext, 
     useContext 
 }  from "react";
-import { ISnackBar } from "../utils/ISnackBar";
-import { SnackBar } from "../components/SnackBar/SnackBar";
+import { IToast } from "../utils/ISnackBar";
+import { ToastBar } from "../components/SnackBar/SnackBar";
 import styled from "styled-components";
 
-export const SnackBarContainer = styled.div`
+export const ToastContainer = styled.div`
     position: fixed;
     right: 0;
     bottom: 0;
@@ -18,19 +16,19 @@ export const SnackBarContainer = styled.div`
     flex-direction: column;
 `;
 
-interface ISnackBarProps {
-    showSnackBar: ({ type, message, callback }: ISnackBar) => void;
+interface IToastProps {
+    showSnackBar: ({ type, message, callback }: IToast) => void;
     addSnackBar: () => void;
 };
 
 interface SnackBarProviderWithChildren extends PropsWithChildren {};
 
-const SnackBarContext = createContext<ISnackBarProps>({} as ISnackBarProps);
+const SnackBarContext = createContext<IToastProps>({} as IToastProps);
 
 export const SnackBarProvider: React.FC<SnackBarProviderWithChildren> = ({children}) => {
-    const [ snackBar, setSnackBar ] = useState<ISnackBar[]>([]);
+    const [ snackBar, setSnackBar ] = useState<IToast[]>([]);
 
-    const showSnackBar = ({ type, message, callback }: ISnackBar) => {
+    const showSnackBar = ({ type, message, callback }: IToast) => {
         setSnackBar(
             [  
                 ...snackBar,
@@ -59,15 +57,15 @@ export const SnackBarProvider: React.FC<SnackBarProviderWithChildren> = ({childr
         }>
             <>
                 {children}
-                <SnackBarContainer>
+                <ToastContainer>
                     { snackBar.map((snack, index) => 
-                        <SnackBar
+                        <ToastBar
                             key={index}
                             type={snack.type}
                             message={snack.message}
                         />)
                     }
-                </SnackBarContainer>
+                </ToastContainer>
             </>
         </SnackBarContext.Provider>
     );

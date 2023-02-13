@@ -11,6 +11,7 @@ export const DashBoard: React.FC = () => {
     return (
         <>
             <Modal 
+                id="modal"
                 openModal={modal}
                 closeModal={() => setModal(false)}
                 backGroundClose
