@@ -14,7 +14,7 @@ export const HomePage: React.FC = () => {
     return (
         <>
             <GridSysten container>
-                <GridSysten item cols={6}>
+                <GridSysten item cols={3}>
                     <InputDefault
                         id="cep"
                         type="cep"
@@ -22,7 +22,7 @@ export const HomePage: React.FC = () => {
                         label="CEP"
                     />
                 </GridSysten>
-                <GridSysten item cols={6}>
+                <GridSysten item cols={3}>
                     <InputDefault
                         id="CPF"
                         type="cpf"
@@ -30,7 +30,7 @@ export const HomePage: React.FC = () => {
                         label="CPF"
                     />
                 </GridSysten>
-                <GridSysten item cols={6}>
+                <GridSysten item cols={3}>
                     <InputDefault
                         id="date"
                         type="date"
@@ -38,7 +38,7 @@ export const HomePage: React.FC = () => {
                         label="DATA"
                     />
                 </GridSysten>
-                <GridSysten item cols={6}>
+                <GridSysten item cols={3}>
                     <InputDefault
                         id="password"
                         type="password"
@@ -71,7 +71,6 @@ export const HomePage: React.FC = () => {
             <button onClick={() => showSnackBar({type: "Success", message: "Hello World", callback: () => console.log("CallBack")})} >Adicionar SnackBar</button>
 
             <h1>PAPEL DO USUARIO = {funcao}</h1>
-            <i className="ph-list"></i>
         </>
     );
 };

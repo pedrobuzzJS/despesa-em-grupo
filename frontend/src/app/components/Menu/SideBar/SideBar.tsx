@@ -19,7 +19,9 @@ export const SideBarLayout: React.FC<PropsWithChildren> = ({children}) => {
                 onMouseOver={openSideBar}
                 onMouseLeave={closeSideBar}
             />
-            <Conteudo>
+            <Conteudo
+                disabled={isSideBarOpen}
+            >
                 {/* {<Outlet />} */}
                 {children}
             </Conteudo>

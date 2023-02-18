@@ -1,6 +1,5 @@
 import React, { InputHTMLAttributes, useCallback, useRef, useState } from "react";
 import { InputContainer } from "./style";
-import { emailValidation } from "../../FormValidations/FormValidations";
 import { cep, currency, cpf, nullMask } from "../Masks/Masks";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -44,7 +43,7 @@ export const InputDefault: React.FC<InputProps> = ({ name, id, type, prefix, spa
                 cpf(e);
             }
             if (type === "email") {
-                emailValidation(e);
+                // emailValidation(e);
             }
             if (!type) {
                 nullMask(e);
