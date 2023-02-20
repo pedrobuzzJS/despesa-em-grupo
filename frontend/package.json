@@ -23,7 +23,6 @@
     "react-scripts": "5.0.1",
     "styled-components": "^5.3.6",
     "styled-icons": "^10.47.0",
-    "styled-media-query": "^2.1.2",
     "typescript": "^4.9.4",
     "web-vitals": "^2.1.4",
     "zod": "^3.20.2"
