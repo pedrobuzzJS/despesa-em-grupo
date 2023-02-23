@@ -18,8 +18,8 @@ CREATE TABLE "tbusuarios" (
 CREATE TABLE "tbmenus" (
     "id" SERIAL NOT NULL,
     "name" VARCHAR(255) NOT NULL,
-    "parameters" VARCHAR(255),
-    "route" VARCHAR(255),
+    "parameters" VARCHAR(1500),
+    "route" VARCHAR(500),
     "icon" VARCHAR(255) NOT NULL,
     "parent_id" INTEGER,
     "component" VARCHAR(255),
@@ -40,6 +40,15 @@ CREATE TABLE "tbstatus" (
     "description" VARCHAR(255) NOT NULL,
 
     CONSTRAINT "tbstatus_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "tbtipopagina" (
+    "id" SERIAL NOT NULL,
+    "nome" VARCHAR(255) NOT NULL,
+    "dcescricao" VARCHAR(255) NOT NULL,
+
+    CONSTRAINT "tbtipopagina_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable

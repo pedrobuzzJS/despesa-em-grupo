@@ -1,32 +1,24 @@
 import styled from "styled-components";
 
-interface InputCssProps {
-    percent?: string;
-    focus?: boolean | any;
+interface InputProps {
+    focus: boolean;
     error: boolean;
-    pixels?: string;
 };
 
-export const InputContainer = styled.div<InputCssProps>`
-    border-radius: 5px;
+export const InputContainerWrapper = styled.div<InputProps>`
+`;
 
+export const InputLabel = styled.label``;
+export const InputDiv = styled.div`
     > input {
-        width: 98%;
-        padding: 15px;
-        margin: 10px auto;
-        border-radius: 5px;
-        border: ${({ focus }) => (focus ? '2px solid blue' : '2px solid gray')};
+        width: 100%;
+        border-top-style: hidden;
+        border-right-style: hidden;
+        border-left-style: hidden;
+        border-bottom-style: groove;
+        background-color: #eee;
     }
+`;
 
-    > label {
-        font-size: 12px;
-        color: gray;
-    }
-
-    span {
-        font-size: 12px;
-        padding: 3px;
-        color: red;
-        display: none;
-    }
+export const StyledError = styled.h1`
 `;

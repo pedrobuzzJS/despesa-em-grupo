@@ -10,7 +10,7 @@ import { useLocation } from "react-router-dom";
 interface MenuInterface {
    menuNome: string | null,
    rotaAtual: string | null,
-   fetechedMenu: LinkMenu[],
+//    fetechedMenu: LinkMenu[],
    isSideBarOpen: boolean;
    showSideBar: () => void;
    openSideBar: () => void;
@@ -24,7 +24,7 @@ const MenuContext = createContext<MenuInterface>({} as MenuInterface);
 export const MenuProvider: React.FC<MenuProviderChildren> = ({children}) => {
     const [ nome, setNome ] = useState<string | null>(null);
     const [ rotaAtual, setRotaAtual ] = useState<string | null>(null);
-    const { data, loadding } = useFetch<any>("menu");
+    // const { data, loadding } = useFetch<any>("menu");
     const { pathname } = useLocation();
     const [ isSideBarOpen, setIsSideBarOpen ] = useState<boolean>(false);
     const showSideBar = () => setIsSideBarOpen(!isSideBarOpen);
@@ -41,7 +41,7 @@ export const MenuProvider: React.FC<MenuProviderChildren> = ({children}) => {
        <MenuContext.Provider value={{
            menuNome: pathname,
            rotaAtual: rotaAtual,
-           fetechedMenu: data,
+        //    fetechedMenu: data,
            isSideBarOpen: isSideBarOpen,
            showSideBar: showSideBar,
            openSideBar: openSideBar,

@@ -14,10 +14,10 @@ const AuthRoutes = () => {
                 <MenuProvider>
                     <SideBarLayout>
                         <Routes>
-                            <Route path="/" element={<HomePage />} />
-                            <Route path="*" element={<h1>404</h1>} />
+                            <Route path="/" element={<RoleProvider children={<HomePage />} funcao={["Ser"]}/>}/>
                             <Route path="dash" element={<RoleProvider children={<DashBoard />} funcao={["Ser"]}/>}/>
                             <Route path="pagea" element={<RoleProvider children={<PageA />} funcao={["Rota Liberada"]}/>}/>
+                            <Route path="*" element={<h1>404</h1>} />
                         </Routes>
                     </SideBarLayout>
                 </MenuProvider>

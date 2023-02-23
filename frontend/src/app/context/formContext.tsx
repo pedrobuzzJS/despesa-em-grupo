@@ -1,7 +1,7 @@
 import React, { createContext, PropsWithChildren, useContext } from "react";
 
 interface IFormProps {
-    
+    formValues?: {};
 };
 
 interface FormWithChildren extends PropsWithChildren {};
@@ -9,13 +9,17 @@ interface FormWithChildren extends PropsWithChildren {};
 const FormContext = createContext<IFormProps>({} as IFormProps);
 
 export const FormProvider: React.FC<FormWithChildren> = ({children}) => {
+
     return (
         <FormContext.Provider
             value={
-                {}
+                {
+                }
             }
         >
-            {children}
+            <form>
+                {children}
+            </form>
         </FormContext.Provider>
     );
 };

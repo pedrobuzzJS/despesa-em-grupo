@@ -16,38 +16,38 @@ export const HomePage: React.FC = () => {
             <GridSysten container>
                 <GridSysten item cols={3}>
                     <InputDefault
-                        id="cep"
-                        type="cep"
-                        name="cep"
-                        label="CEP"
+                        id="texto"
+                        type="text"
+                        name="texto"
+                        label="texto"
                     />
                 </GridSysten>
                 <GridSysten item cols={3}>
-                    <InputDefault
+                    {/* <InputDefault
                         id="CPF"
                         type="cpf"
                         name="CPF"
                         label="CPF"
-                    />
+                    /> */}
                 </GridSysten>
                 <GridSysten item cols={3}>
-                    <InputDefault
+                    {/* <InputDefault
                         id="date"
                         type="date"
                         name="date"
                         label="DATA"
-                    />
+                    /> */}
                 </GridSysten>
                 <GridSysten item cols={3}>
-                    <InputDefault
+                    {/* <InputDefault
                         id="password"
                         type="password"
                         name="password"
                         label="Senha"
-                    />
+                    /> */}
                 </GridSysten>
             </GridSysten>
-            <Modal 
+            {/* <Modal 
                 id="modal_1"
                 openModal={modal1}
                 closeModal={() => setModal1(false)}
@@ -70,7 +70,7 @@ export const HomePage: React.FC = () => {
             <button onClick={() => setModal1(true)} >Abrir Modal</button>
             <button onClick={() => showSnackBar({type: "Success", message: "Hello World", callback: () => console.log("CallBack")})} >Adicionar SnackBar</button>
 
-            <h1>PAPEL DO USUARIO = {funcao}</h1>
+            <h1>PAPEL DO USUARIO = {funcao}</h1> */}
         </>
     );
 };

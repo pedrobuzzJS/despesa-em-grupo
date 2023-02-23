@@ -45,7 +45,7 @@ export const SnackBarProvider: React.FC<SnackBarProviderWithChildren> = ({childr
     };
 
     useEffect(() => {
-        console.log(snackBar);
+        // console.log(snackBar);
     }, [snackBar]);
 
     return (

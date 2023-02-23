@@ -28,7 +28,6 @@ export const BarraSuperior = styled.div`
 export const Conteudo = styled.div<ShowMenuToggle>`
     width: 100%;
     height: 100%;
-    /* padding-left: 60px; */
     padding-left: ${({ disabled }) => (disabled && disabled === true ? '260px' : '60px')};
     padding-right: 10px;
     transition: all 0.4s;
