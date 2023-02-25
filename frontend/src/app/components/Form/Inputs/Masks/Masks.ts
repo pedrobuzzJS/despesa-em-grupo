@@ -4,7 +4,8 @@ export function cep(e: React.FormEvent<HTMLInputElement>) {
     value = value.replace(/\D/g, "");
     value = value.replace(/^(\d{5})(\d)/, "$1-$2");
     e.currentTarget.value = value;
-    return e;
+    // return e;
+    return value;
   };
     
   export function currency(e: React.FormEvent<HTMLInputElement>) {
@@ -13,7 +14,8 @@ export function cep(e: React.FormEvent<HTMLInputElement>) {
     value = value.replace(/(\d)(\d{2})$/, "$1,$2");
     value = value.replace(/(?=(\d{3})+(\D))\B/g, ".");  
     e.currentTarget.value = value;
-    return e;
+    // return e;
+    return value;
   };
     
   export function cpf(e: React.FormEvent<HTMLInputElement>) {
@@ -26,9 +28,14 @@ export function cep(e: React.FormEvent<HTMLInputElement>) {
       value = value.replace(/(\d{3})(\d{2})$/, "$1-$2");
       e.currentTarget.value = value;
     };
-    return e;
+    // return e;
+    return value;
   };
+
+  export function emailValidation(e: React.FormEvent<HTMLInputElement>) {
+    return e.currentTarget.value;
+  }
   
   export function nullMask(e: React.FormEvent<HTMLInputElement>) {
-    return e;
+    return e.currentTarget.value;
   };

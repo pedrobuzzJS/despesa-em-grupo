@@ -19,32 +19,16 @@ export const HomePage: React.FC = () => {
                         id="texto"
                         type="text"
                         name="texto"
-                        label="texto"
+                        label="CPF"
                     />
                 </GridSysten>
                 <GridSysten item cols={3}>
-                    {/* <InputDefault
-                        id="CPF"
-                        type="cpf"
-                        name="CPF"
-                        label="CPF"
-                    /> */}
-                </GridSysten>
-                <GridSysten item cols={3}>
-                    {/* <InputDefault
-                        id="date"
-                        type="date"
-                        name="date"
-                        label="DATA"
-                    /> */}
-                </GridSysten>
-                <GridSysten item cols={3}>
-                    {/* <InputDefault
-                        id="password"
-                        type="password"
-                        name="password"
-                        label="Senha"
-                    /> */}
+                    <InputDefault
+                        id="cep"
+                        type="cep"
+                        name="cep"
+                        label="CEP"
+                    />
                 </GridSysten>
             </GridSysten>
             {/* <Modal 
