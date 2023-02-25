@@ -1,4 +1,4 @@
-import React, { FormEvent, InputHTMLAttributes, useCallback, useEffect, useRef, useState } from "react";
+import React, { InputHTMLAttributes, useCallback, useEffect, useRef, useState } from "react";
 import { InputContainerWrapper, InputDiv, InputLabel, StyledError } from "./style";
 import { cep, currency, cpf, nullMask, emailValidation } from "../Masks/Masks";
 

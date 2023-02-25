@@ -4,6 +4,7 @@ import { Modal } from "../../components/Modal/Modal";
 import { useRole } from "../../context/RoleContext";
 import { useSnackBar } from "../../context/snackBarContext";
 import { InputDefault } from "../../components/Form/Inputs/InputDefault/InputDefault";
+import { Form } from "../../components/Form/Form";
 
 export const HomePage: React.FC = () => {
     const { funcao } = useRole();
@@ -14,22 +15,24 @@ export const HomePage: React.FC = () => {
     return (
         <>
             <GridSysten container>
-                <GridSysten item cols={3}>
-                    <InputDefault
-                        id="texto"
-                        type="text"
-                        name="texto"
-                        label="CPF"
-                    />
-                </GridSysten>
-                <GridSysten item cols={3}>
-                    <InputDefault
-                        id="cep"
-                        type="cep"
-                        name="cep"
-                        label="CEP"
-                    />
-                </GridSysten>
+                <Form>
+                    <GridSysten item cols={3}>
+                        <InputDefault
+                            id="texto"
+                            type="cpf"
+                            name="texto"
+                            label="CPF"
+                        />
+                    </GridSysten>
+                    <GridSysten item cols={3}>
+                        <InputDefault
+                            id="cep"
+                            type="cep"
+                            name="cep"
+                            label="CEP"
+                        />
+                    </GridSysten>
+                </Form>
             </GridSysten>
             {/* <Modal 
                 id="modal_1"
