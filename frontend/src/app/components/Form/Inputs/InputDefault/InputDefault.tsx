@@ -1,58 +1,85 @@
 import React, { InputHTMLAttributes, useCallback, useEffect, useRef, useState } from "react";
-import { InputContainerWrapper, InputDiv, InputLabel, StyledError } from "./style";
+import { InputContainerWrapper, InputDiv, StyledError } from "./style";
 import { cep, currency, cpf, nullMask, emailValidation } from "../Masks/Masks";
+import { useForm } from "../../../../context/formContext";
+
+export type FormInputTypes = "text" | "email" | "password" | "button" | "color" | "file" | "cpf"
+                        | "currency" | "cep" | "date" | "number";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-    name: string;
-    id: string;
-    label: string;
-    placeholder?: string;
-    type:   "text" | "email" | "password" | "button" | "color" | "file" | "cpf"
-            | "currency" | "cep" | "date" | "number";
+    name: string | undefined;
+    id: string | undefined;
+    label: string | undefined;
+    placeholder?: string | undefined;
+    type: FormInputTypes | undefined;
 };
 
 export const InputDefault: React.FC<InputProps> = ({ name, id, type, placeholder, label, ...props }) => {
-    const [ isFocused, setIsFocused ] = useState<boolean>(false);
     const [ error, setError ] = useState<string | null>(null);
     const inputRef = useRef<HTMLInputElement>(null);
-    const [ inputValue, setInputValue ] = useState<any>("");
+    const [ inputValue, setInputValue ] = useState<any>({value: "65165"});
 
-    const handleInputFocus = useCallback(() => {
-        setIsFocused(true);
-    }, []);
-
-    const handleInputBlur = useCallback(() => {
-        setIsFocused(false);
-    }, []);
-
-    // const handleInputChange = useCallback((e: FormEvent<HTMLInputElement>) => {
-    //     setInputValue(e.currentTarget?.value);
-    // }, []);
+    const { sendValues, inputArrayValues, setFormField } = useForm();
 
     useEffect(() => {
-        // console.log(inputValue);
-    }, [inputValue]);
+        setFormField({
+            name: inputRef.current?.name,
+            ref: inputRef.current
+        });
+    }, [sendValues, setFormField]);
 
     const handleKeyDown = useCallback(
         (e: React.FormEvent<HTMLInputElement>) => {        
             switch (type) {
                 case "cep":
-                    setInputValue(cep(e));
+                    cep(e);
+                    return setInputValue(
+                        {
+                            name: e.currentTarget.name, 
+                            value: e.currentTarget.value
+                        }
+                    );
                 break;
                 case "currency":
-                    setInputValue(currency(e));
+                    return setInputValue(
+                        {
+                            name: e.currentTarget.name, 
+                            value: e.currentTarget.value
+                        }
+                    );
                 break;
                 case "cpf":
-                    setInputValue(cpf(e));
+                    cpf(e);
+                    return setInputValue(
+                        {
+                            name: e.currentTarget.name, 
+                            value: e.currentTarget.value
+                        }
+                    );
                 break;
                 case "email":
-                    setInputValue(emailValidation(e));
+                    return setInputValue(
+                        {
+                            name: e.currentTarget.name, 
+                            value: e.currentTarget.value
+                        }
+                    );
                 break;
                 case "text":
-                    setInputValue(nullMask(e));
+                    return setInputValue(
+                        {
+                            name: e.currentTarget.name, 
+                            value: e.currentTarget.value
+                        }
+                    );
                 break;
                 default:
-                    setInputValue(nullMask(e));
+                    return setInputValue(
+                        {
+                            name: e.currentTarget.name, 
+                            value: e.currentTarget.value
+                        }
+                    );
                 break;
             };
         }, 
@@ -62,25 +89,23 @@ export const InputDefault: React.FC<InputProps> = ({ name, id, type, placeholder
     return (
         <>
             <InputContainerWrapper
-                focus={isFocused}
                 error={Boolean(error)}
             >
-                <InputLabel htmlFor={id} >
+                <label htmlFor={id}>
                     <span>
-                        {label}:
+                        {label}
                     </span>
-                </InputLabel>
+                </label>
                 <InputDiv>
                     <input
                         ref={inputRef}
                         type={type}
                         name={name}
                         id={id}
-                        onFocus={handleInputFocus}
-                        onBlur={handleInputBlur}
                         onChange={handleKeyDown}
                         placeholder={placeholder}
-                        value={inputValue}
+                        value={inputValue?.value}
+                        {...props}
                     />
                 </InputDiv>
                 { error !== null && 
