@@ -11,18 +11,18 @@ export const Toast = styled.div<IToastStyle>`
     margin: 10px;
 
     ${props => props?.type === "Success" && css`
-        background-color: rgb(0, 158, 0);
+        background-color: var(--succes);
     `};
 
     ${props => props?.type === "Info" && css`
-        background-color: rgb(86, 83, 255);
+        background-color: var(--info);
     `};
 
     ${props => props?.type === "Warning" && css`
-        background-color: rgb(255, 181, 44);
+        background-color: var(--warning);
     `};
 
     ${props => props?.type === "Error" && css`
-        background-color: rgb(219, 55, 55);
+        background-color: var(--error);
     `};
 `;
