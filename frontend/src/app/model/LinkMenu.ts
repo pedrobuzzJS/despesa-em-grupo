@@ -5,8 +5,7 @@ export interface LinkMenu {
     id:                 number;
     name:               string;
     parameters?:        string;
-    route?:             string;
-    // icon:               React.ComponentType<IconBaseProps>;
+    route:              string;
     icon:               string;
     parent_id?:         number;
     childrens?:         LinkMenu[];
