@@ -30,21 +30,25 @@ export default createGlobalStyle`
     }
 
     :root {
-        --primary:      #007BFF,
-
-        --secondary:    #6C757D,
-
-        --succes:       #28A745,
-
-        --danger:       #DC3545,
-
-        --warning:      #FFC107,
-
-        --info:         #17A2B8,
-
-        --white:        #fff,
-
-        --link:         #5d80d6,
+        --primary:      #007BFF;
+        --secondary:    #6C757D;
+        --succes:       #28A745;
+        --error:        #DC3545;
+        --warning:      #FFC107;
+        --info:         #17A2B8;
+        --white:        #fff;
+        --link:         #5d80d6;
+        --input-color: black; 
+        --input-border: #CDD9ED;
+        --input-background: #fff;
+        --input-placeholder: #CBD1DC;
+        --input-border-focus: #275EFE;
+        --group-color: var(--input-color);
+        --group-border: var(--input-border);
+        --group-background: #EEF4FF;
+        --group-color-focus: #fff;
+        --group-border-focus: var(--input-border-focus);
+        --group-background-focus: #678EFE;
     }
 
     .react-modal-overlay{
@@ -59,24 +63,4 @@ export default createGlobalStyle`
         align-items: center;
         justify-content: center;
     }
-
-    /* .react-modal-content{
-        width: 100%;
-        max-width: 1500px;
-        background: #eee;
-        padding: 3rem;
-        position: relative;
-        border-radius: 0.25rem;
-    }
-
-    .react-modal-close {
-        position: absolute;
-        display: block;
-        position: 2px;
-        right: 1.5rem;
-        top: 1.5rem;
-        border: 0;
-        background: transparent;
-        cursor: pointer;
-    } */
 `;
