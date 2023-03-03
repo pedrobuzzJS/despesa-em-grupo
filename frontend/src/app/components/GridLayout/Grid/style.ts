@@ -12,6 +12,8 @@ export const StyledGrid = styled.div<IGridSystem>`
     ${props => props?.item === true && css`
         display: block;
         height: 100%;
+        margin-top: 10px;
+        margin-bottom: 10px;
     `}
 
     ${props => props?.item === true && css`
