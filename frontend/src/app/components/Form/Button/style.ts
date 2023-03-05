@@ -1,6 +1,12 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { SortDown } from "styled-icons/boxicons-regular";
 
 export const ButtonConteinar = styled.div`
+`;
+
+export const DropDownOption = styled(SortDown)`
+    width: 20px;
+    height: 20px;
 `;
 
 export const StyledButton = styled.button`
@@ -52,4 +58,24 @@ export const StyledButton = styled.button`
         background-color: #298e46;
         box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
     }
+`;
+
+interface isDropDownOpen {
+    disabled: boolean;
+    hasDropDown: boolean;
+};
+
+export const DropDownContent = styled.div<isDropDownOpen>`
+    display: ${({ disabled }) => (disabled && disabled === true ? css`block` : css`none`)};
+
+    ${props => props?.hasDropDown === false && css`
+        display: none;
+    `}
+
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
 `;
