@@ -12,8 +12,8 @@ export const ToastContainer = styled.div`
     position: fixed;
     right: 0;
     bottom: 0;
-    display: flex;
-    flex-direction: column;
+    /* display: flex; */
+    /* flex-direction: column; */
 `;
 
 interface IToastProps {
@@ -45,7 +45,6 @@ export const SnackBarProvider: React.FC<SnackBarProviderWithChildren> = ({childr
     };
 
     useEffect(() => {
-        // console.log(snackBar);
     }, [snackBar]);
 
     return (
