@@ -11,6 +11,9 @@ import { DataGrid } from "../../components/DataTable/DataTable";
 import { FieldTypes, GridFields } from "../../utils/Fields";
 import { Operation } from "../../utils/Operation";
 import { useFetch } from "../../hooks/useFetch";
+import { LeftUtils } from "../../components/LeftUtils/LeftUtils";
+import { BottomUtils } from "../../components/BottomUtils/BottomUtils";
+import { TopUtils } from "../../components/TopUtils/TopUtils";
 
 const inputs: FormInputs[] = [
     {
@@ -132,26 +135,35 @@ const campos: GridFields[] = [
         type: FieldTypes.BUTTON,
         buttons: [
             {
-                button: "menu",
-                action: Operation.VIEW,
-                title: "Visualizar",
+                button: "acoes",
+                action: Operation.DROP,
+                title: "",
                 icon: "RiIcons.RiDashboardFill",
-                rotina: "menu",
-            },
-            {
-                button: "menu",
-                action: Operation.ALTER,
-                title: "Alterar",
-                icon: "RiIcons.RiDashboardFill",
-                rotina: "menu",
-            },
-            {
-                button: "menu",
-                action: Operation.DELETE,
-                title: "Deletar    ",
-                icon: "RiIcons.RiDashboardFill",
-                rotina: "menu",
-            },
+                rotina: "drop",
+                dropDownButtons: [
+                    {
+                        button: "menu",
+                        action: Operation.VIEW,
+                        title: "Visualizar",
+                        icon: "RiDashboardFill",
+                        rotina: "menu",
+                    },
+                    {
+                        button: "menu",
+                        action: Operation.ALTER,
+                        title: "Alterar",
+                        icon: "RiDashboardFill",
+                        rotina: "menu",
+                    },
+                    {
+                        button: "menu",
+                        action: Operation.DELETE,
+                        title: "Deletar    ",
+                        icon: "RiDashboardFill",
+                        rotina: "menu",
+                    },
+                ]
+            }
         ]
     }
 ];
@@ -196,13 +208,20 @@ export const HomePage: React.FC = () => {
             <h1>PAPEL DO USUARIO = {funcao}</h1>
 
             <GridSysten container>
-                <GridSysten item cols={12}>
+                <GridSysten item cols={9}>
                     <DataGrid 
                         columns={campos} 
                         initialData={data}
                     />
                 </GridSysten>
             </GridSysten>
+            <LeftUtils />
+            <BottomUtils />
+            <TopUtils
+                isOpen={false}
+            >
+                <h1>Dentro do Utils</h1>
+            </TopUtils>
         </>
     );
 };
