@@ -43,12 +43,16 @@ export const MenuProvider: React.FC<MenuProviderChildren> = ({children}) => {
 
     const openSideBar = () => {
         if (superOpenSideBar === true) return
-        return setIsSideBarOpen(true);
+        return setTimeout( () => {
+            setIsSideBarOpen(true);
+        }, 150);
     };
 
     const closeSideBar = () => {
         if (superOpenSideBar === true) return;
-        return setIsSideBarOpen(false);
+        return setTimeout( () => {
+            setIsSideBarOpen(false);
+        }, 150);
     };
 
    return (
