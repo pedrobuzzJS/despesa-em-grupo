@@ -17,7 +17,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 export const InputDefault: React.FC<InputProps> = ({ name, id, type, placeholder, label, ...props }) => {
     const [ error, setError ] = useState<string | null>(null);
     const inputRef = useRef<HTMLInputElement>(null);
-    const [ inputValue, setInputValue ] = useState<any>({value: "65165"});
+    const [ inputValue, setInputValue ] = useState<any>();
 
     const { sendValues, inputArrayValues, setFormField } = useForm();
 
@@ -26,60 +26,60 @@ export const InputDefault: React.FC<InputProps> = ({ name, id, type, placeholder
             name: inputRef.current?.name,
             ref: inputRef.current
         });
-    }, [sendValues, setFormField]);
+    }, [setFormField, inputValue]);
 
     const handleKeyDown = useCallback(
         (e: React.FormEvent<HTMLInputElement>) => {        
             switch (type) {
                 case "cep":
                     cep(e);
-                    return setInputValue(
-                        {
-                            name: e.currentTarget.name, 
-                            value: e.currentTarget.value
-                        }
-                    );
+                    // return setInputValue(
+                    //     {
+                    //         name: e.currentTarget.name, 
+                    //         value: e.currentTarget.value
+                    //     }
+                    // );
                 break;
                 case "currency":
-                    return setInputValue(
-                        {
-                            name: e.currentTarget.name, 
-                            value: e.currentTarget.value
-                        }
-                    );
+                    // return setInputValue(
+                    //     {
+                    //         name: e.currentTarget.name, 
+                    //         value: e.currentTarget.value
+                    //     }
+                    // );
                 break;
                 case "cpf":
                     cpf(e);
-                    return setInputValue(
-                        {
-                            name: e.currentTarget.name, 
-                            value: e.currentTarget.value
-                        }
-                    );
+                    // return setInputValue(
+                    //     {
+                    //         name: e.currentTarget.name, 
+                    //         value: e.currentTarget.value
+                    //     }
+                    // );
                 break;
                 case "email":
-                    return setInputValue(
-                        {
-                            name: e.currentTarget.name, 
-                            value: e.currentTarget.value
-                        }
-                    );
+                    // return setInputValue(
+                    //     {
+                    //         name: e.currentTarget.name, 
+                    //         value: e.currentTarget.value
+                    //     }
+                    // );
                 break;
                 case "text":
-                    return setInputValue(
-                        {
-                            name: e.currentTarget.name, 
-                            value: e.currentTarget.value
-                        }
-                    );
+                    // return setInputValue(
+                    //     {
+                    //         name: e.currentTarget.name, 
+                    //         value: e.currentTarget.value
+                    //     }
+                    // );
                 break;
                 default:
-                    return setInputValue(
-                        {
-                            name: e.currentTarget.name, 
-                            value: e.currentTarget.value
-                        }
-                    );
+                    // return setInputValue(
+                    //     {
+                    //         name: e.currentTarget.name, 
+                    //         value: e.currentTarget.value
+                    //     }
+                    // );
                 break;
             };
         }, 
@@ -104,7 +104,7 @@ export const InputDefault: React.FC<InputProps> = ({ name, id, type, placeholder
                         id={id}
                         onChange={handleKeyDown}
                         placeholder={placeholder}
-                        value={inputValue?.value}
+                        // value={inputValue?.value}
                         {...props}
                     />
                 </InputDiv>

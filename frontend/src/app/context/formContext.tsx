@@ -26,17 +26,14 @@ export const FormProvider: React.FC<FormWithChildren> = ({children}) => {
         fieldRefArray.push({name, ref});
     };
 
-    // const registerField = useCallback((field: UnformField) => {
-    //     fields.current.push(field)
-    //   }, [])
-
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         setSendValues(!sendValues);
-        fieldRefArray.forEach((item) => {
-            console.log("***" + item?.name);
-            console.log("***" + item?.ref?.value);
-        })
+        // fieldRefArray.forEach((item) => {
+        //     console.log("***" + item?.name);
+        //     console.log("***" + item?.ref?.value);
+        // })
+        console.log(fieldRefArray);
     };
 
     const addFormValues = () => {
