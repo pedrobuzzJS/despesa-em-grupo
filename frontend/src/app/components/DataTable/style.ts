@@ -6,7 +6,7 @@ export const Container = styled.div`
 `;
 
 export const TableContainer = styled.table`
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
     border-collapse: collapse;
 
