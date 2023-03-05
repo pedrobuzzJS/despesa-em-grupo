@@ -8,4 +8,5 @@ export class Operation {
     public static ACTIVE = 7;
     public static LOGAR = 8;
     public static DUPLICATE = 9;
+    public static DROP = 10;
 };
