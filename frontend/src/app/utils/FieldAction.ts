@@ -1,5 +1,4 @@
 import { DisableButtonCondition } from "./DisableButtonCondition";
-
 export interface FieldAction {
     id?: number;
     button: string;
@@ -12,4 +11,5 @@ export interface FieldAction {
     color?: string;
     order?: number;
     disableCondition?: DisableButtonCondition;
+    dropDownButtons?: FieldAction[];
 };
