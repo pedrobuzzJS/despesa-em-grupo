@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
 
 interface Toggle {
@@ -6,8 +6,11 @@ interface Toggle {
 };
 
 export const Container = styled.div<Toggle>`
+    /* background: blueviolet; */
     > div {
-        display: ${({ isSubMenuOpen }) => (isSubMenuOpen && isSubMenuOpen === true ? 'block' : 'none')};
+        transition: all 0.2s;
+        margin-top: ${({ isSubMenuOpen }) => (isSubMenuOpen && isSubMenuOpen === true ? '' : '-40px')};
+        margin-left: ${({ isSubMenuOpen }) => (isSubMenuOpen && isSubMenuOpen === true ? '' : '-250px')};
     }
 `;
 
@@ -20,7 +23,7 @@ interface LinkContainerToggle {
 }
 
 export const LinkContainer = styled(Link)<LinkContainerToggle>`
-    display: ${({ disabled }) => (disabled && disabled === true ? 'none' : 'flex')};
+    display: ${({ disabled }) => (disabled && disabled === true ? css`none` : css`flex`)};
     color: var(--input-color);
     justify-content: space-between;
     align-items: center;
@@ -63,6 +66,7 @@ export const ImgContainer = styled.div<Toggle>`
         transition: 350ms;
         width: 35px;
         height: 35px;
+        transform: ${({ isSubMenuOpen }) => (isSubMenuOpen && isSubMenuOpen === true ? css`rotate(90deg)` : '')};
 
         &:hover {
             transform: rotate(90deg);

@@ -101,4 +101,10 @@ export const ExitSection = styled.div<ShowMenuToggle>`
     background: black;
     color: white;
     transition: all 0.4s;
+
+    > svg {
+        display: block;
+        padding: 5px;
+        cursor: pointer;
+    }
 `;

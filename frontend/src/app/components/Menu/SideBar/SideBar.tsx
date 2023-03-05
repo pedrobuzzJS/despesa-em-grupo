@@ -1,6 +1,7 @@
 import React, { PropsWithChildren } from "react";
 import { Exit } from "styled-icons/boxicons-regular";
 import { Menu } from "styled-icons/entypo";
+import { useAuth } from "../../../context/authContext";
 import { useMenu } from "../../../context/menuContext";
 import { LinkMenu } from "../../../model/LinkMenu";
 import { SideBarItem } from "../SideBarItem/SideBarItem";
@@ -14,6 +15,7 @@ import {    SideBar,
 
 export const SideBarLayout: React.FC<PropsWithChildren> = ({children}) => {
     const { isSideBarOpen, openSideBar, closeSideBar, fetechedMenu, toggleSideBar, superOpenSideBar } = useMenu();
+    const { signOut } = useAuth();
 
     let LinksTratados: LinkMenu[] = [];
 
@@ -30,7 +32,6 @@ export const SideBarLayout: React.FC<PropsWithChildren> = ({children}) => {
         };
         return linkFilhosRetorno;
     };
-
     
     fetechedMenu?.forEach((link, index) => {
         link.childrens = buildChildrenLinks(link, fetechedMenu);
@@ -66,7 +67,9 @@ export const SideBarLayout: React.FC<PropsWithChildren> = ({children}) => {
                 <ExitSection
                     disabled={isSideBarOpen}
                 >
-                    <Exit />
+                    <Exit
+                        onClick={signOut}
+                    />
                 </ExitSection>
             </SideBar>
             <TopMenu>
