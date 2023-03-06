@@ -1,4 +1,4 @@
-import React, { createContext, PropsWithChildren, useContext, useRef, useState } from "react";
+import React, { createContext, PropsWithChildren, useContext, useState } from "react";
 
 interface inputField {
     name: any;
@@ -29,11 +29,9 @@ export const FormProvider: React.FC<FormWithChildren> = ({children}) => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         setSendValues(!sendValues);
-        // fieldRefArray.forEach((item) => {
-        //     console.log("***" + item?.name);
-        //     console.log("***" + item?.ref?.value);
-        // })
         console.log(fieldRefArray);
+        const formObj = fieldRefArray.reduce((obj: any, item: any) => ((obj[item.name] = item.ref.value), obj),{});
+        console.log(formObj);
     };
 
     const addFormValues = () => {
