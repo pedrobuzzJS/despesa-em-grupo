@@ -7,11 +7,11 @@ import { Operation } from "../../../../utils/Operation";
 
 const campos: GridFields[] = [
     {
+        key: true,
         field: "id",
         title: "ID",
         description: "id",
-        key: true,
-        type: FieldTypes.TEXT,
+        type: FieldTypes.KEY,
     },
     {
         field: "nome",
@@ -75,6 +75,7 @@ export const TipoDespesaConsulta: React.FC = () => {
                     <DataGrid 
                         columns={campos} 
                         initialData={data}
+                        pathMantencao="tipo-despesa"
                     />
                 </GridSysten>
             </GridSysten>
