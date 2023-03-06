@@ -30,7 +30,7 @@ export const TableRows = styled.tr<TableRowProps>`
     text-align: left;
     border-bottom: 1px solid #bcbcbc;
     line-height: 15px;
-    background: ${props => props.isOdd? "#dddddd" : ""};
+    /* background: ${props => props.isOdd? "#dddddd" : ""}; */
 
     &:hover {
         background: #b0acac;
@@ -50,7 +50,7 @@ export const ButtonContainerGrid = styled.div`
 `;
 
 export const ButtonContainer = styled.div`
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
     display: flex;
     padding-bottom: 15px;
@@ -64,15 +64,55 @@ export const FiltersContainer = styled.div`
 `;
 
 
-export const TableSSS = styled.table`
-    margin: 0 0 40px 0;
+export const TableSSS = styled.div`
+    /* margin: 0 0 40px 0;
     width: 100%;
     box-shadow: 0 1px 3px rgba(0,0,0,0.2);
     display: table;
-    /* @media screen and (max-width: 580px); */
-    display: block;
+    display: block; */
+    width: 100%;
 `;
 
-export const Row = styled.div`
+export const StyledTable = styled.table`
+    width: 100%;
+    margin: 2rem 0;
+	padding: 1rem;
+	box-shadow: 0 0 5px #333;
+	/* box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1); */
+	border: solid 1px #fff;
+	background-color: #fff;
+	border-radius: 1rem;
+	position: relative;
+`;
 
+export const Thead = styled.thead`
+    text-align: left;
+    width: 100%;
+    position: sticky;
+    top: 0;
+`;
+
+export const TheadTR = styled.tr``;
+
+export const TheadTH = styled.th`
+    border: solid 1px #fff;
+    background-color: rgb(238 238 238 / 50%);
+    backdrop-filter: blur(5px);
+    border-radius: 0.5rem;
+`;
+
+export const Tbody = styled.tbody``;
+
+export const TbodyTR = styled.tr<TableRowProps>`
+    background: ${props => props.isOdd? "#dddddd" : ""};
+`;
+
+export const TbodyTRTH = styled.th``;
+
+export const TbodyTRTD = styled.td`
+    /* border-top: solid 1px #fff; */
+    /* border-bottom: solid 1px #fff; */
+    /* border-radius: 0.5rem; */
+    padding: .1rem;
+    text-align: left;
 `;

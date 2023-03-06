@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { FieldTypes, GridFields } from "../../utils/Fields";
 import { Button } from "../Form/Button/Button";
-import { ButtonContainer, ButtonContainerGrid, Container, TableContainer, TableRows, TableSSS } from "./style";
+import { ButtonContainer, ButtonContainerGrid, Container, StyledTable, Tbody, TbodyTR, TbodyTRTD, Thead, TheadTH, TheadTR } from "./style";
 
 interface GridProps {
     columns: GridFields[],
@@ -15,73 +15,84 @@ export const DataGrid: React.FC<GridProps> = ({ columns, initialData, loading, p
     const teste: any[] = initialData; 
     const navigate = useNavigate();
 
-    const buildMaintenanceURL = useCallback( (btn: string, op: number, id?: any) => {
-        let url = btn + "-manutencao" + `/${op}` + `/${id}`;
-        return navigate("/"+url);
-    }, [navigate]);
-
     const buttonInserFormValues = useCallback( (op: number) => {
         let url = pathMantencao + "-manutencao" + `/${op}`;
         return navigate("/"+url);
-    }, [navigate] );
+    }, [navigate, pathMantencao] );
 
     return (
-        <Container>
-            {loading ? 
+        <>
+            <Container>
+                {loading ? 
                 <h1>Carregando</h1> 
                 :
                 <>
                     <ButtonContainer>
-                        <Button
+                        {/* <Button
                             buttonDescription="Inserir"
-                            onClick={() => buttonInserFormValues(
-                                2
-                            )}
-                        />
+                                onClick={() => buttonInserFormValues(2)}
+                        /> */}
                     </ButtonContainer>
-                    <TableContainer>
-                        <thead>
-                            <tr>
+                    <StyledTable>
+                        <Thead>
+                            <TheadTR>
                                 {columns && columns.map( (column, index) => (
-                                    <th key={index}>{column.title}</th>
+                                <TheadTH
+                                    key={index}
+                                >
+                                    {column.title}
+                                </TheadTH>
                                 ) )}
-                            </tr>
-                        </thead>
-                        <tbody>
+                            </TheadTR>
+                        </Thead>
+                        <Tbody>
+                            {/* <TbodyTR>
+                                <TbodyTRTH>01</TbodyTRTH>
+                            </TbodyTR> */}
                             {teste && teste?.map((item, index) => (
-                                <TableRows key={index} isOdd={Boolean(index%2)}>
-                                    {columns && columns.map( (column, index) => (
-                                    column.type === FieldTypes.TEXT ?
-                                        <td key={index}>
-                                            {item[column?.field]}
-                                        </td>
-                                        :
-                                        column.type === FieldTypes.BUTTON ?
-                                        <td key={index}>
-                                            <ButtonContainerGrid key={index}>
-                                                {column.buttons?.map((btn, index) => (
-                                                    <Button
-                                                        key={index}
-                                                        buttonDescription={btn.title}
-                                                        dropDownOption={btn.dropDownButtons}
-                                                    />
-                                                ))}
-                                            </ButtonContainerGrid>
-                                        </td>
-                                        :
-                                        <td key={index}></td>
+                            <TbodyTR
+                                key={index}
+                                isOdd={Boolean(index%2)}
+                            >
+                                {columns && columns.map( (column, index) => (
+                                    column.type === FieldTypes.TEXT
+                                ?
+                                    <TbodyTRTD
+                                        key={index}
+                                    >
+                                        {item[column?.field]}
+                                    </TbodyTRTD>
+                                :
+                                column.type === FieldTypes.BUTTON
+                                ?
+                                <TbodyTRTD
+                                    key={index}
+                                >
+                                    <ButtonContainerGrid
+                                        key={index}
+                                    >
+                                        {column.buttons?.map((btn, index) => (
+                                            <Button
+                                                key={index}
+                                                buttonDescription={btn.title}
+                                                dropDownOption={btn.dropDownButtons}
+                                            />
+                                        ))}
+                                    </ButtonContainerGrid>
+                                </TbodyTRTD>
+                                :
+                                <TbodyTRTD
+                                    key={index}
+                                >
+                                </TbodyTRTD>
                                 ) )}
-                                </TableRows>
+                            </TbodyTR>
                             ))}
-                        </tbody>
-                    </TableContainer>
+                        </Tbody>
+                    </StyledTable>
                 </>
-            }
-        </Container>
-        // <>
-        //     <TableSSS>
-                
-        //     </TableSSS>
-        // </>
+                }
+            </Container>
+        </>
     )
 };
