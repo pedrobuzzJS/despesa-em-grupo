@@ -36,7 +36,8 @@ export const HambugerMenu = styled.div`
 export const Conteudo = styled.div<ShowMenuToggle>`
     width: 100%;
     height: 100%;
-    padding-top: 60px;
+    padding-top: 70px;
+    padding-right: 10px;
     padding-left: ${({ disabled }) => (disabled && disabled === true ? '60px' : '60px')};
 
     ${props => props?.superOpenSideBar === true && css`
