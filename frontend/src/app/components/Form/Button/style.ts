@@ -75,6 +75,9 @@ export const DropDownContent = styled.div<isDropDownOpen>`
     position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;
+    /* width: 200px; */
+    /* height: 200px; */
+    transition: all 0.4s;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     padding: 12px 16px;
     z-index: 1;
