@@ -64,3 +64,11 @@ model Page {
 
   @@map("tbpaginas")
 }
+
+model TipoDespesa {
+  id        Int    @id @default(autoincrement())
+  nome      String @db.VarChar(255)
+  descricao String @db.VarChar(255)
+
+  @@map("tbtipodespesa")
+}
