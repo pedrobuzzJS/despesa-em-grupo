@@ -1,19 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { GridSysten } from "../../components/GridLayout/Grid/Grid";
-// import { Modal } from "../../components/Modal/Modal";
-import { useRole } from "../../context/RoleContext";
-import { useSnackBar } from "../../context/snackBarContext";
-// import { InputDefault } from "../../components/Form/Inputs/InputDefault/InputDefault";
 import { Form } from "../../components/Form/Form";
 import { FormInputs, InputType } from "../../utils/FormFields";
-import { Modal } from "../../components/Modal/Modal";
 import { DataGrid } from "../../components/DataTable/DataTable";
 import { FieldTypes, GridFields } from "../../utils/Fields";
 import { Operation } from "../../utils/Operation";
 import { useFetch } from "../../hooks/useFetch";
-import { LeftUtils } from "../../components/LeftUtils/LeftUtils";
-import { BottomUtils } from "../../components/BottomUtils/BottomUtils";
-import { TopUtils } from "../../components/TopUtils/TopUtils";
 
 const inputs: FormInputs[] = [
     {
@@ -99,18 +91,6 @@ const campos: GridFields[] = [
         type: FieldTypes.TEXT,
     },
     {
-        field: "component",
-        title: "Componente",
-        description: "Componente",
-        type: FieldTypes.TEXT,
-    },
-    {
-        field: "has_childrens",
-        title: "Possui Filho",
-        description: "Possui Filho",
-        type: FieldTypes.TEXT,
-    },
-    {
         field: "status_id",
         title: "Status ID",
         description: "status_id",
@@ -120,12 +100,6 @@ const campos: GridFields[] = [
         field: "created_at",
         title: "Criado em",
         description: "created_at",
-        type: FieldTypes.TEXT,
-    },
-    {
-        field: "updated_at",
-        title: "Alterado em",
-        description: "updated_at",
         type: FieldTypes.TEXT,
     },
     {
@@ -169,59 +143,28 @@ const campos: GridFields[] = [
 ];
 
 export const HomePage: React.FC = () => {
-    const { funcao } = useRole();
-    const [ modal1, setModal1 ] = useState<boolean>(false);
-    const [ modal2, setModal2 ] = useState<boolean>(false);
-    const { showSnackBar } = useSnackBar();
     const { data } = useFetch("menu");
 
     return (
         <>
-            <GridSysten container>
-                <Form
+            <GridSysten container justify="center">
+                {/* <Form
                     campos={inputs}
-                />
+                /> */}
+                <GridSysten item cols={12}>
+                    <Form
+                        campos={inputs}
+                    />
+                </GridSysten>
             </GridSysten>
-            <Modal 
-                id="modal_1"
-                openModal={modal1}
-                closeModal={() => setModal1(false)}
-                backGroundClose
-                closeOnEsc
-            >
-                <h1>{"modal 2"}</h1>
-                    <button onClick={() => setModal2(true)} >Abrir Modal 2 cagado</button>
-                <Modal 
-                    id="modal_2"
-                    openModal={modal2}
-                    closeModal={() => setModal2(false)}
-                    backGroundClose
-                    closeOnEsc
-                >
-                    <>Bem vindo ao segundo modal</>
-                </Modal>
-            </Modal>
-
-            <button onClick={() => setModal1(true)} >Abrir Modal</button>
-            <button onClick={() => showSnackBar({type: "Success", message: "Hello World", callback: () => console.log("CallBack")})} >Adicionar SnackBar</button>
-
-            <h1>PAPEL DO USUARIO = {funcao}</h1>
-
-            <GridSysten container>
-                <GridSysten item cols={9}>
+            <GridSysten container justify="center">
+                <GridSysten item cols={8}>
                     <DataGrid 
                         columns={campos} 
                         initialData={data}
                     />
                 </GridSysten>
             </GridSysten>
-            <LeftUtils />
-            <BottomUtils />
-            <TopUtils
-                isOpen={false}
-            >
-                <h1>Dentro do Utils</h1>
-            </TopUtils>
         </>
     );
 };
