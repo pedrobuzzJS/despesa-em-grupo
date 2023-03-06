@@ -30,6 +30,7 @@ export const Button: React.FC<ButtonProps> = ({buttonDescription, dropDownOption
         >
             <StyledButton
                 ref={buttonRef}
+                {...props}
             >
                 {buttonDescription}
                 {dropDownOption && dropDownOption.length ?
