@@ -6,7 +6,8 @@ export const StyledGrid = styled.div<IGridSystem>`
         display: flex;
         flex-wrap: wrap;
         width: 100%;
-        justify-content: start;
+        /* height: 100%; */
+        justify-content: ${props?.justify};
     `}
 
     ${props => props?.item === true && css`
