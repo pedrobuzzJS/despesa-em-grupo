@@ -16,4 +16,5 @@ export class FieldTypes {
   public static BOOLEAN = 3;
   public static COLOR = 4;
   public static CHECKBOX = 5;
+  public static KEY = 6;
 };
