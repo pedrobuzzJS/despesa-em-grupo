@@ -6,15 +6,12 @@ export const StyledGrid = styled.div<IGridSystem>`
         display: flex;
         flex-wrap: wrap;
         width: 100%;
-        /* height: 100%; */
         justify-content: ${props?.justify};
     `}
 
     ${props => props?.item === true && css`
         display: block;
         height: 100%;
-        margin-top: 10px;
-        margin-bottom: 10px;
     `}
 
     ${props => props?.item === true && css`
