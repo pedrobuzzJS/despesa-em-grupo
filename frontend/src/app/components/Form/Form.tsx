@@ -1,4 +1,4 @@
-import React, { FormHTMLAttributes, useRef } from "react";
+import React, { FormHTMLAttributes } from "react";
 import { useForm } from "../../context/formContext";
 import { FormInputs, InputType } from "../../utils/FormFields";
 import { GridSysten } from "../GridLayout/Grid/Grid";
@@ -8,14 +8,14 @@ import { Select } from "./Inputs/Select/Select";
 import { FormContainer, StyledForm } from "./style";
 interface IFormProps extends FormHTMLAttributes<HTMLFormElement> {
     op?: number;
-    initialValue?: any[];
+    initialData?: any[];
     campos: FormInputs[];
     urlBakc?: any;
     callBack?: (callback?: any) => void;
     children?: React.ReactNode
 };
 
-export const Form: React.FC<IFormProps> = ({ op,initialValue, campos, urlBakc, callBack, children }) => {
+export const Form: React.FC<IFormProps> = ({ op, initialData, campos, urlBakc, callBack, children }) => {
 
     const { handleSubmit } = useForm();
 
