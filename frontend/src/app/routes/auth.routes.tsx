@@ -6,6 +6,7 @@ import { HomePage } from "../pages/Home/Home";
 import { SnackBarProvider } from "../context/snackBarContext";
 import { FormProvider } from "../context/formContext";
 import { TipoDespesaConsulta } from "../pages/Consulta_Cadastros/TipoDespesa/TipoDespesaConsulta/TipoDespesaConsulta";
+import { TipoDespesaCadastro } from "../pages/Consulta_Cadastros/TipoDespesa/TipoDespesaCadastro/TipoDespesaCadastro";
 
 const AuthRoutes = () => {
     return (
@@ -17,6 +18,8 @@ const AuthRoutes = () => {
                             <Routes>
                                 <Route path="/" element={<RoleProvider children={<HomePage />} funcao={["Ser"]}/>}/>
                                 <Route path="tipo-despesa" element={<RoleProvider children={<TipoDespesaConsulta />} funcao={["Ser"]}/>}/>
+                                <Route path="tipo-despesa-manutencao/:op/:id" element={<RoleProvider children={<TipoDespesaCadastro />} funcao={["Ser"]}/>}/>
+                                <Route path="tipo-despesa-manutencao/:op" element={<RoleProvider children={<TipoDespesaCadastro />} funcao={["Ser"]}/>}/>
                                 <Route path="*" element={<h1>404</h1>} />
                             </Routes>
                         </FormProvider>
