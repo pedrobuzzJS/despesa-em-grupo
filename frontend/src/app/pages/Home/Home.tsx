@@ -6,6 +6,7 @@ import { DataGrid } from "../../components/DataTable/DataTable";
 import { FieldTypes, GridFields } from "../../utils/Fields";
 import { Operation } from "../../utils/Operation";
 import { useFetch } from "../../hooks/useFetch";
+import { LinkMenu } from "../../model/LinkMenu";
 
 const inputs: FormInputs[] = [
     {
@@ -38,7 +39,7 @@ const inputs: FormInputs[] = [
         label: "Teste de Select",
         placeholder: "",
         type: InputType.SELECT,
-        cols: 4,
+        cols: 7,
         options: [
             {
                 key: "1",
@@ -54,11 +55,11 @@ const inputs: FormInputs[] = [
 
 const campos: GridFields[] = [
     {
+        key: true,
         field: "id",
         title: "ID",
         description: "id",
-        key: true,
-        type: FieldTypes.TEXT,
+        type: FieldTypes.KEY,
     },
     {
         field: "name",
@@ -66,12 +67,12 @@ const campos: GridFields[] = [
         description: "Nome",
         type: FieldTypes.TEXT,
     },
-    {
-        field: "parameters",
-        title: "Parametros",
-        description: "Parametros",
-        type: FieldTypes.TEXT,
-    },
+    // {
+    //     field: "parameters",
+    //     title: "Parametros",
+    //     description: "Parametros",
+    //     type: FieldTypes.TEXT,
+    // },
     {
         field: "route",
         title: "Rotas",
@@ -96,12 +97,12 @@ const campos: GridFields[] = [
         description: "status_id",
         type: FieldTypes.TEXT,
     },
-    {
-        field: "created_at",
-        title: "Criado em",
-        description: "created_at",
-        type: FieldTypes.TEXT,
-    },
+    // {
+    //     field: "created_at",
+    //     title: "Criado em",
+    //     description: "created_at",
+    //     type: FieldTypes.TEXT,
+    // },
     {
         field: "buttons",
         title: "Acoes",
@@ -143,25 +144,35 @@ const campos: GridFields[] = [
 ];
 
 export const HomePage: React.FC = () => {
-    const { data } = useFetch("menu");
+    const { data: menus } = useFetch<LinkMenu[]>("menu");
+    // const { data: tipoDespesas } = useFetch("tipo-despesa");
 
     return (
         <>
-            <GridSysten container justify="center">
-                {/* <Form
-                    campos={inputs}
-                /> */}
-                <GridSysten item cols={12}>
+            <GridSysten
+                container
+                justify="center"
+            >
+                <GridSysten
+                    item
+                    cols={12}
+                >
                     <Form
                         campos={inputs}
                     />
                 </GridSysten>
             </GridSysten>
-            <GridSysten container justify="center">
-                <GridSysten item cols={8}>
+            <GridSysten
+                container
+                justify="center"
+            >
+                <GridSysten
+                    item
+                    cols={12}
+                >
                     <DataGrid 
                         columns={campos} 
-                        initialData={data}
+                        initialData={menus}
                     />
                 </GridSysten>
             </GridSysten>
