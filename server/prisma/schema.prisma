@@ -47,7 +47,7 @@ model Status {
   id          Int    @id @default(autoincrement())
   nome        String @db.VarChar(255)
   description String @db.VarChar(255)
-  cor String @db.VarChar(100)
+  cor         String @db.VarChar(100)
 
   @@map("tbstatus")
 }
