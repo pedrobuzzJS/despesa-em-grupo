@@ -1,4 +1,4 @@
-import React, { FormHTMLAttributes } from "react";
+import React, { FormHTMLAttributes, useCallback } from "react";
 import { useForm } from "../../context/formContext";
 import { FormInputs, InputType } from "../../utils/FormFields";
 import { GridSysten } from "../GridLayout/Grid/Grid";
@@ -8,22 +8,31 @@ import { Select } from "./Inputs/Select/Select";
 import { FormContainer, StyledForm } from "./style";
 interface IFormProps extends FormHTMLAttributes<HTMLFormElement> {
     op?: number;
-    initialData?: any[];
+    initialData?: {};
     campos: FormInputs[];
-    urlBakc?: any;
+    urlBakc: string;
     callBack?: (callback?: any) => void;
     children?: React.ReactNode
 };
 
 export const Form: React.FC<IFormProps> = ({ op, initialData, campos, urlBakc, callBack, children }) => {
+    var dot = require('dot-object');
 
     const { handleSubmit } = useForm();
+
+    // const findValueById = useCallback((values: any, key: any) => {
+    //     if (values?.hasOwnProperty(key)) {
+    //         const data = values[key];
+    //         return data;
+    //     }
+    //     return "";
+    // }, []);
 
     return (
         <FormContainer>
             
             <StyledForm
-                onSubmit={handleSubmit}
+                onSubmit={(e) => handleSubmit(e, urlBakc)}
             >
                 <GridSysten container>
 
@@ -37,10 +46,11 @@ export const Form: React.FC<IFormProps> = ({ op, initialData, campos, urlBakc, c
                                 <Select
                                     key={index}
                                     id={campo.id}
-                                    value={campo.value}
+                                    value={dot.pick(campo.name, initialData)}
                                     name={campo.name}
                                     listOptions={campo.options}
                                     label={campo.label}
+                                    disabled={campo.disabled}
                                 />
                             </GridSysten>
                             :
@@ -55,7 +65,9 @@ export const Form: React.FC<IFormProps> = ({ op, initialData, campos, urlBakc, c
                                     id={campo.id}
                                     label={campo.label}
                                     placeholder={campo.placeholder}
-                                    type={campo.type}      
+                                    type={campo.type}
+                                    disabled={campo.disabled}
+                                    initialData={initialData}
                                 />
                             </GridSysten>
                     ) )}

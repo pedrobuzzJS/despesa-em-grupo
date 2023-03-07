@@ -54,8 +54,8 @@ export const Select: React.FC<SelectProps> = ({ id, name, value, listOptions, la
                                 <option
                                     key={index}
                                     value={item.key}
-                                    >{
-                                    item.value}
+                                    >
+                                        {item.value}
                                 </option>        
                             )
                         }

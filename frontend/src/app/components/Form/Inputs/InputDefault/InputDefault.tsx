@@ -12,21 +12,28 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     label: string | undefined;
     placeholder?: string | undefined;
     type: FormInputTypes | undefined;
+    initialData?: {};
 };
 
-export const InputDefault: React.FC<InputProps> = ({ name, id, type, placeholder, label, ...props }) => {
-    const [ error, setError ] = useState<string | null>(null);
+export const InputDefault: React.FC<InputProps> = ({ name, id, type, placeholder, label, initialData, ...props }) => {
+    var dot = require('dot-object');
+    const [ error ] = useState<string | null>(null);
     const inputRef = useRef<HTMLInputElement>(null);
     const [ inputValue, setInputValue ] = useState<any>();
+    // console.log(inputValue);
 
-    const { sendValues, inputArrayValues, setFormField } = useForm();
+    const { setFormField } = useForm();
+
+    useEffect( () => {
+        setInputValue(dot.pick(name, initialData));
+    }, [initialData])
 
     useEffect(() => {
         setFormField({
             name: inputRef.current?.name,
             ref: inputRef.current
         });
-    }, [setFormField, inputValue]);
+    }, [setFormField]);
 
     const handleKeyDown = useCallback(
         (e: React.FormEvent<HTMLInputElement>) => {        
@@ -66,12 +73,7 @@ export const InputDefault: React.FC<InputProps> = ({ name, id, type, placeholder
                     // );
                 break;
                 case "text":
-                    // return setInputValue(
-                    //     {
-                    //         name: e.currentTarget.name, 
-                    //         value: e.currentTarget.value
-                    //     }
-                    // );
+                    return setInputValue(e.currentTarget.value);
                 break;
                 default:
                     // return setInputValue(
@@ -104,7 +106,7 @@ export const InputDefault: React.FC<InputProps> = ({ name, id, type, placeholder
                         id={id}
                         onChange={handleKeyDown}
                         placeholder={placeholder}
-                        // value={inputValue?.value}
+                        value={inputValue}
                         {...props}
                     />
                 </InputDiv>

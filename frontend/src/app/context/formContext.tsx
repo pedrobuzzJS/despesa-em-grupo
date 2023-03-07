@@ -1,4 +1,6 @@
 import React, { createContext, PropsWithChildren, useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import api from "../services/api";
 
 interface inputField {
     name: any;
@@ -6,11 +8,12 @@ interface inputField {
 }
 interface IFormProps {
     formValues?: {};
-    handleSubmit: (e: React.FormEvent) => void;
+    handleSubmit: (e: React.FormEvent, urlBakc: string) => void;
     addFormValues: () => void;
     sendValues: boolean;
     inputArrayValues: string;
     setFormField: ({name, ref}: inputField) => void;
+    getInitialValue: (name: string) => any;
 };
 
 interface FormWithChildren extends PropsWithChildren {};
@@ -25,13 +28,32 @@ export const FormProvider: React.FC<FormWithChildren> = ({children}) => {
     const setFormFieldArray = ({name, ref}: inputField) => {
         fieldRefArray.push({name, ref});
     };
+    var dot = require('dot-object');
+    const navigate = useNavigate();
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent, urlBakc: string) => {
         e.preventDefault();
-        setSendValues(!sendValues);
-        console.log(fieldRefArray);
-        const formObj = fieldRefArray.reduce((obj: any, item: any) => ((obj[item.name] = item.ref.value), obj),{});
-        console.log(formObj);
+        await setSendValues(!sendValues);
+        const formObj = await fieldRefArray.reduce((obj: any, item: any) => ((obj[item.name] = item.ref.value), obj),{});
+        const newObjectValues = dot.object(formObj);
+        try {
+            await api.post(urlBakc, {
+                data: JSON.stringify(newObjectValues)
+            }).then(response => {
+                const { status } = response;
+                navigate(-1)
+            }).catch(async error => {
+                // await setBackResponse(error.response.data.message.code);
+                // await setShowSnackBar(true);
+            }).finally(
+            );
+        } catch (error) {
+            console.log(error);
+        };
+    };
+
+    const getInitialValue = (name: string) => {
+        return name;
     };
 
     const addFormValues = () => {
@@ -46,7 +68,8 @@ export const FormProvider: React.FC<FormWithChildren> = ({children}) => {
                     addFormValues: addFormValues,
                     sendValues: sendValues,
                     inputArrayValues: inputArrayValues,
-                    setFormField: setFormFieldArray
+                    setFormField: setFormFieldArray,
+                    getInitialValue: getInitialValue
                 }
             }
         >
