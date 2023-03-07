@@ -56,6 +56,7 @@ export const TipoDespesaCadastro: React.FC = () => {
                         campos={inputs}
                         urlBakc="tipo-despesa"
                         initialData={data}
+                        op={Number(op)}
                     />
                 </GridSysten>
             </GridSysten>

@@ -132,6 +132,7 @@ export const DataGrid: React.FC<GridProps> = ({ columns, initialData, loading, p
                                                 key={index}
                                                 buttonDescription={btn.title}
                                                 dropDownOption={btn.dropDownButtons}
+                                                {...btn}
                                             />
                                         ))}
                                     </ButtonContainerGrid>

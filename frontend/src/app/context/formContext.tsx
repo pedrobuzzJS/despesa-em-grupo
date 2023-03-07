@@ -1,6 +1,7 @@
-import React, { createContext, PropsWithChildren, useContext, useState } from "react";
+import React, { createContext, PropsWithChildren, useCallback, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../services/api";
+import { Operation } from "../utils/Operation";
 
 interface inputField {
     name: any;
@@ -8,12 +9,13 @@ interface inputField {
 }
 interface IFormProps {
     formValues?: {};
-    handleSubmit: (e: React.FormEvent, urlBakc: string) => void;
+    handleSubmit: (e: React.FormEvent, urlBakc: string, op: number) => void;
     addFormValues: () => void;
     sendValues: boolean;
     inputArrayValues: string;
     setFormField: ({name, ref}: inputField) => void;
     getInitialValue: (name: string) => any;
+    buildMaintenanceURL: (btn: string, op: number, id?: any) => void;
 };
 
 interface FormWithChildren extends PropsWithChildren {};
@@ -31,24 +33,71 @@ export const FormProvider: React.FC<FormWithChildren> = ({children}) => {
     var dot = require('dot-object');
     const navigate = useNavigate();
 
-    const handleSubmit = async (e: React.FormEvent, urlBakc: string) => {
+    const buildMaintenanceURL = useCallback( (btn: string, op: number, id?: any) => {
+        let url = btn + "-manutencao" + `/${op}` + `/${id}`;
+        return navigate("/"+url);
+    }, [navigate]);
+
+    const handleSubmit = async (e: React.FormEvent, urlBakc: string, op: number) => {
         e.preventDefault();
         await setSendValues(!sendValues);
         const formObj = await fieldRefArray.reduce((obj: any, item: any) => ((obj[item.name] = item.ref.value), obj),{});
         const newObjectValues = dot.object(formObj);
-        try {
-            await api.post(urlBakc, {
-                data: JSON.stringify(newObjectValues)
-            }).then(response => {
-                const { status } = response;
-                navigate(-1)
-            }).catch(async error => {
-                // await setBackResponse(error.response.data.message.code);
-                // await setShowSnackBar(true);
-            }).finally(
-            );
-        } catch (error) {
-            console.log(error);
+        switch (op) {
+            case Operation.INSERT:
+                try {
+                    await api.post(urlBakc, {
+                        data: JSON.stringify(newObjectValues)
+                    }).then(response => {
+                        const { status } = response;
+                        navigate(-1)
+                    }).catch(async error => {
+                        // await setBackResponse(error.response.data.message.code);
+                        // await setShowSnackBar(true);
+                    }).finally(
+                    );
+                } catch (error) {
+                    console.log(error);
+                };
+            break;
+            case Operation.ALTER:
+                try {
+                    await api.put(urlBakc, {
+                        data: JSON.stringify(newObjectValues)
+                    }).then(response => {
+                        const { status } = response;
+                        navigate(-1)
+                    }).catch(async error => {
+                        // await setBackResponse(error.response.data.message.code);
+                        // await setShowSnackBar(true);
+                    }).finally(
+                    );;
+                } catch (error) {
+                    console.log(error);
+                };
+            break;
+            case Operation.DELETE:
+                try {
+                    await api.delete(urlBakc, {
+                            params: {
+                                id: dot.pick("id", newObjectValues)
+                            }
+                        }
+                    ).then(response => {
+                        const { status } = response;
+                        navigate(-1);
+                    }).catch(async error => {
+                        // await setBackResponse(error.response.data.message.code);
+                        // await setShowSnackBar(true);
+                    }).finally(
+                    );
+                } catch (error) {
+                    console.log(error);
+                };
+            break;
+            case Operation.VIEW:
+                navigate(-1);
+            break;
         };
     };
 
@@ -69,7 +118,8 @@ export const FormProvider: React.FC<FormWithChildren> = ({children}) => {
                     sendValues: sendValues,
                     inputArrayValues: inputArrayValues,
                     setFormField: setFormFieldArray,
-                    getInitialValue: getInitialValue
+                    getInitialValue: getInitialValue,
+                    buildMaintenanceURL: buildMaintenanceURL
                 }
             }
         >

@@ -1,4 +1,5 @@
 import React, { ButtonHTMLAttributes, useCallback, useRef, useState } from "react";
+import { useForm } from "../../../context/formContext";
 import { ButtonConteinar, DropDownContent, DropDownOption, StyledButton } from "./style";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -12,9 +13,10 @@ export const Button: React.FC<ButtonProps> = ({buttonDescription, dropDownOption
     const [ isDropDownOpen, setIsDropDownOpen ] = useState<boolean>(false);
     // const [ hasDropDown ] = useState()
     const buttonRef = useRef(null);
-    const toggleDropDownOpen = useCallback(() => {
-        setIsDropDownOpen(!isDropDownOpen);
-    }, []);
+    // const toggleDropDownOpen = useCallback(() => {
+    //     setIsDropDownOpen(!isDropDownOpen);
+    // }, []);
+    const { buildMaintenanceURL } = useForm();
 
     const openDropDown = useCallback(() => {
         setIsDropDownOpen(true);
@@ -48,6 +50,7 @@ export const Button: React.FC<ButtonProps> = ({buttonDescription, dropDownOption
                         key={index}
                         buttonDescription={btn.title}
                         dropDownOption={btn.dropDownButtons}
+                        {...btn}
                     />
                 ))}
             </DropDownContent>

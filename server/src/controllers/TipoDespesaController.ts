@@ -4,7 +4,6 @@ import { Request, Response } from "express";
 export default class TipoDespesaController {
     static async list(request: Request, response: Response) {
         const { id } = request.query;
-        console.log(id)
         let data;
 
         if (id) {
@@ -76,6 +75,29 @@ export default class TipoDespesaController {
                         "msg" : "Successes"
                     }
                 );
+            };
+        } catch (error) {
+            return response.status(500).json({
+                message: error
+            });
+        };
+    };
+    static async delete(request: Request, response: Response) {
+        const { id } = request.query;
+        try {
+            if (id) {
+                const deleteTipoDespesa = await client.tipoDespesa.delete({
+                    where: {
+                        id: Number(id)
+                    }
+                })
+                if (deleteTipoDespesa) {
+                    return response.json(
+                        {
+                            "msg" : "Successes"
+                        }
+                    );
+                };
             };
         } catch (error) {
             return response.status(500).json({

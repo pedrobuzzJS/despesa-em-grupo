@@ -1,6 +1,7 @@
+import { ButtonHTMLAttributes } from "react";
 import { DisableButtonCondition } from "./DisableButtonCondition";
-export interface FieldAction {
-    id?: number;
+export interface FieldAction extends ButtonHTMLAttributes<HTMLButtonElement> {
+    id?: any;
     button: string;
     action: number;
     rotina?: string;

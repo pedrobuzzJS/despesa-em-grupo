@@ -11,6 +11,7 @@ Routes.get("/menu", MenuController.list);
 
 Routes.get("/tipo-despesa", TipoDespesaController.list)
 Routes.post("/tipo-despesa", TipoDespesaController.create)
-Routes.put("/tipo-despesa", TipoDespesaController.create)
+Routes.put("/tipo-despesa", TipoDespesaController.update)
+Routes.delete("/tipo-despesa", TipoDespesaController.delete)
 
 export default Routes;

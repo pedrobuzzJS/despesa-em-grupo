@@ -1,4 +1,4 @@
-import React, { FormHTMLAttributes, useCallback } from "react";
+import React, { FormHTMLAttributes } from "react";
 import { useForm } from "../../context/formContext";
 import { FormInputs, InputType } from "../../utils/FormFields";
 import { GridSysten } from "../GridLayout/Grid/Grid";
@@ -32,7 +32,7 @@ export const Form: React.FC<IFormProps> = ({ op, initialData, campos, urlBakc, c
         <FormContainer>
             
             <StyledForm
-                onSubmit={(e) => handleSubmit(e, urlBakc)}
+                onSubmit={(e) => handleSubmit(e, urlBakc, Number(op))}
             >
                 <GridSysten container>
 
