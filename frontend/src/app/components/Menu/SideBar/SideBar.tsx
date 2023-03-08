@@ -1,8 +1,9 @@
-import React, { PropsWithChildren } from "react";
+import React, { PropsWithChildren, useState } from "react";
 import { Exit } from "styled-icons/boxicons-regular";
 import { Menu } from "styled-icons/entypo";
 import { useAuth } from "../../../context/authContext";
-import { useMenu } from "../../../context/menuContext";
+// import { useMenu } from "../../../context/menuContext";
+import { useFetch } from "../../../hooks/useFetch";
 import { LinkMenu } from "../../../model/LinkMenu";
 import { SideBarItem } from "../SideBarItem/SideBarItem";
 import {    SideBar,
@@ -14,7 +15,38 @@ import {    SideBar,
 } from "./style";
 
 export const SideBarLayout: React.FC<PropsWithChildren> = ({children}) => {
-    const { isSideBarOpen, openSideBar, closeSideBar, fetechedMenu, toggleSideBar, superOpenSideBar } = useMenu();
+    // const [ nome, setNome ] = useState<string | null>(null);
+    // const [ rotaAtual, setRotaAtual ] = useState<string | null>(null);
+    const { data, loadding } = useFetch<LinkMenu[]>("menu");
+    // const { pathname } = useLocation();
+    // const [ fetechedMenu, setMenuList ] = useState<LinkMenu[]>();
+    const [ isSideBarOpen, setIsSideBarOpen ] = useState<boolean>(false);
+    const [ superOpenSideBar, setSuperOpenSideBar ] = useState<boolean>(false);
+
+    const toggleSideBar = () => {
+        if (superOpenSideBar === false) {
+            setSuperOpenSideBar(true);
+            return setIsSideBarOpen(true)
+        } else {
+            setSuperOpenSideBar(false);
+            return setIsSideBarOpen(false)
+        }
+    };
+
+    const openSideBar = () => {
+        if (superOpenSideBar === true) return
+        return setTimeout( () => {
+            setIsSideBarOpen(true);
+        }, 150);
+    };
+
+    const closeSideBar = () => {
+        if (superOpenSideBar === true) return;
+        return setTimeout( () => {
+            setIsSideBarOpen(false);
+        }, 150);
+    };
+    // const { isSideBarOpen, openSideBar, closeSideBar, fetechedMenu, toggleSideBar, superOpenSideBar } = useMenu();
     const { signOut } = useAuth();
 
     let LinksTratados: LinkMenu[] = [];
@@ -33,8 +65,8 @@ export const SideBarLayout: React.FC<PropsWithChildren> = ({children}) => {
         return linkFilhosRetorno;
     };
     
-    fetechedMenu?.forEach((link, index) => {
-        link.childrens = buildChildrenLinks(link, fetechedMenu);
+    data?.forEach((link, index) => {
+        link.childrens = buildChildrenLinks(link, data);
         LinksTratados.push(link);
     });
 
