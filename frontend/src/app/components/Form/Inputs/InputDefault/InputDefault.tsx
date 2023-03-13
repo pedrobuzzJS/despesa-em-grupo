@@ -35,17 +35,12 @@ export const InputDefault: React.FC<InputProps> = ({ name, id, type, placeholder
         });
     }, [setFormField]);
 
-    const handleKeyDown = useCallback(
+    const handleOnChange = useCallback(
         (e: React.FormEvent<HTMLInputElement>) => {        
             switch (type) {
                 case "cep":
                     cep(e);
-                    // return setInputValue(
-                    //     {
-                    //         name: e.currentTarget.name, 
-                    //         value: e.currentTarget.value
-                    //     }
-                    // );
+                    return setInputValue(e.currentTarget.value);
                 break;
                 case "currency":
                     // return setInputValue(
@@ -104,7 +99,7 @@ export const InputDefault: React.FC<InputProps> = ({ name, id, type, placeholder
                         type={type}
                         name={name}
                         id={id}
-                        onChange={handleKeyDown}
+                        onChange={handleOnChange}
                         placeholder={placeholder}
                         value={inputValue}
                         {...props}
